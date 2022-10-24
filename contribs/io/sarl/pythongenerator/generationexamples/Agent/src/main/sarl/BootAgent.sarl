@@ -8,6 +8,7 @@ agent BootAgent {
 	on Initialize {
 		// Event trigger before the agent begin to live or to be used.
 		// You should put all the initialization statements in this block of code.
+		spawn(SpecialAgent)
 		println("The agent was started.")
 		killMe
 	}
@@ -27,11 +28,25 @@ agent SecondAgent {
 
 	on Initialize {
 		myVar = 10
-		printstate()
+		printstate(getstate())
+		printstate(getstate2())
+		printstate2(getstate())
 	}
 	
-	def printstate {
-		println(myVar)
+	def getstate(): int {
+		return myVar;
+	}
+	
+	def getstate2() {
+		return myVar;
+	}
+	
+	def printstate(s: int) {
+		println(s)
+	}
+	
+	def printstate2(s : int) : void {
+		println(s)
 	}
 }
 
