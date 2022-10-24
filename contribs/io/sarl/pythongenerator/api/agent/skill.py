@@ -1,4 +1,3 @@
 class Skill:
-
-    def __init__(self, C):
+    def __init__(self):
         pass
