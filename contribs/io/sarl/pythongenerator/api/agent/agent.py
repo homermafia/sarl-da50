@@ -10,8 +10,8 @@ from contribs.io.sarl.pythongenerator.api.agent.abstractSkillContainer import Ab
 
 class Agent(AbstractSkillContainer):
 
-    def __init__(self, parentID, agentID):
-        super(Agent, self).__init__()
+    def __init__(self, parentID, agentID, dynamicSkillProvider = None):
+        super(Agent, self).__init__(dynamicSkillProvider)
         self.__parentID = parentID
         self.__agentID = agentID
 

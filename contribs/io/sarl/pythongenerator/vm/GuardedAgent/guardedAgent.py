@@ -41,5 +41,5 @@ class GuardedAgent(Agent, object):
             __event_handles.append(self.__on_Initialize___1)
         return __event_handles
 
-    def __init__(self, parentID, agentID):
-        super().__init__(parentID, agentID)
+    def __init__(self, parentID, agentID, dynamicSkillProvider = None):
+        super().__init__(parentID, agentID, dynamicSkillProvider)
