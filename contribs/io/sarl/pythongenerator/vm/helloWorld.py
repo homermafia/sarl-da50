@@ -35,5 +35,5 @@ class HelloWorldAgent(Agent, object):
         __event_handles.append(self.__on_Initialize__)
         return __event_handles
 
-    def __init__(self):
-        pass
+    def __init__(self, parentID, agentID, dynamicSkillProvider = None):
+        super().__init__(parentID, agentID, dynamicSkillProvider)

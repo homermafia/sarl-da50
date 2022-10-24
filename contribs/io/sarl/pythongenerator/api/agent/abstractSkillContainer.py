@@ -4,21 +4,27 @@ Created on Tue Oct  4 21:00:29 2022
 
 @author: loic
 """
-
+from contribs.io.sarl.pythongenerator.api.agent.dynamicSkillProvider import EmptyDynamicSkillProvider
 from contribs.io.sarl.pythongenerator.api.capacity.capacity import Capacity
 from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
 
 
 class AbstractSkillContainer(object):
 
-    def __init__(self):
+    def __init__(self, dynamicSkillProvider = None):
         # Skill repository
         # dictionnary of capacities
         self.__skillRepository = dict()
+        if dynamicSkillProvider is None:
+            self.__dynamicSkillProvider = EmptyDynamicSkillProvider()
+        else :
+            self.__dynamicSkillProvider = dynamicSkillProvider
 
     def getSkill(self, capacity):
         assert capacity is not None and issubclass(capacity, Capacity) and not issubclass(capacity, Skill)
         skill = self.__skillRepository.get(capacity)
+        if skill is None:
+            skill = self.__dynamicSkillProvider.createSkill(capacity)
         assert skill is not None
         return skill
 

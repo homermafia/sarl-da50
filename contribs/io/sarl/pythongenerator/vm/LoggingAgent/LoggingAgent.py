@@ -25,6 +25,8 @@
 from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
 from contribs.io.sarl.pythongenerator.vm.LoggingAgent.LoggingSkill import LoggingSkill
 from contribs.io.sarl.pythongenerator.vm.LoggingAgent.Logging import Logging
+from contribs.io.sarl.pythongenerator.vm.LoggingAgent.SecondAgent import SecondAgent
+from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
 
 
 class LoggingAgent(Agent, object):
@@ -34,6 +36,7 @@ class LoggingAgent(Agent, object):
         self.setSkill(s)
         self.getSkill(Logging).info(u"Hello World INFO!")
         self.getSkill(Logging).debug(u"Hello World DEBUG!")
+        self.getSkill(Lifecycle).spawn(SecondAgent)
         print(self.hasSkill(Logging))
         self.clearSkill(Logging)
         print(self.hasSkill(Logging))
@@ -44,5 +47,5 @@ class LoggingAgent(Agent, object):
         __event_handles.append(self.__on_Initialize__)
         return __event_handles
 
-    def __init__(self, parentID, agentID):
-        super().__init__(parentID, agentID)
+    def __init__(self, parentID, agentID, dynamicSkillProvider = None):
+        super().__init__(parentID, agentID, dynamicSkillProvider)
