@@ -3,6 +3,7 @@ from contribs.io.sarl.pythongenerator.vm.GuardedAgent.guardedAgent import Guarde
 from contribs.io.sarl.pythongenerator.vm.Kernel import Kernel
 #from contribs.io.sarl.pythongenerator.vm.HelloWorld.helloWorld import HelloWorldAgent
 from contribs.io.sarl.pythongenerator.vm.LoggingAgent.LoggingAgent import LoggingAgent
+from contribs.io.sarl.pythongenerator.vm.PingPong.BootPingPongAgent import BootPingPongAgent
 
 import uuid
 
@@ -27,5 +28,9 @@ from contribs.io.sarl.pythongenerator.vm.builtin.skill.SreDynamicSkillProvider i
 #myAgentEvents = agentWithEvent.__guard_io_sarl_core_Initialize__(agentWithEvent)
 #myAgentEvents[0](agentWithEvent)
 
+# kernel = Kernel()
+# kernel.start(LoggingAgent)
+
+
 kernel = Kernel()
-kernel.start(LoggingAgent)
+kernel.start(BootPingPongAgent)
