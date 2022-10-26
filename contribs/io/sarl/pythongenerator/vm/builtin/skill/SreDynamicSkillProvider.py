@@ -7,6 +7,7 @@ from contribs.io.sarl.pythongenerator.vm.builtin.skill.LifecycleSkill import Lif
 class SreDynamicSkillProvider(DynamicSkillProvider):
 
     def __init__(self):
+        super().__init__()
         self.__skillsDict = {
             Lifecycle: LifecycleSkill(self),
         }

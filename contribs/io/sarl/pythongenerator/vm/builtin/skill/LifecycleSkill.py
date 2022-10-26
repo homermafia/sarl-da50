@@ -10,4 +10,4 @@ class LifecycleSkill(Skill, Lifecycle, object):
         self.__lifecycleService = LifecycleService(dynamicSkillProvider)
 
     def spawn(self, agentClass):
-        self.__lifecycleService.createAgent(agentClass)
+        self.__lifecycleService.createAgent(agentClass, self.getOwner().getID())

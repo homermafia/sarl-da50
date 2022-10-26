@@ -26,6 +26,7 @@ class AbstractSkillContainer(object):
         if skill is None:
             skill = self.__dynamicSkillProvider.createSkill(capacity)
         assert skill is not None
+        skill.setOwner(self)
         return skill
 
     def setSkill(self, skill, *capacities):
