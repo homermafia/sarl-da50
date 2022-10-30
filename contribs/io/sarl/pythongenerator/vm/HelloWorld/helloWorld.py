@@ -21,13 +21,17 @@ class BootAgent(Agent,object):
 
 #### GENERATE PYTHON CODE WITH NECESSARY MODIFICATION
 
-from contribs.io.sarl.pythongenerator.api.agent import Agent
+from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
+from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Logging import Logging
 
 
 class HelloWorldAgent(Agent, object):
 
     def __on_Initialize__(self, occurrence):
-        print(u"Hello World!")
+        self.getSkill(Logging).debug(u"Hello World!d")
+        self.getSkill(Logging).info(u"Hello World!i")
+        self.getSkill(Logging).warning(u"Hello World!w")
+        self.getSkill(Logging).error(u"Hello World!e")
 
     def __guard_io_sarl_core_Initialize__(self, occurrence):
         it = occurrence
@@ -35,5 +39,5 @@ class HelloWorldAgent(Agent, object):
         __event_handles.append(self.__on_Initialize__)
         return __event_handles
 
-    def __init__(self, parentID, agentID, dynamicSkillProvider = None):
+    def __init__(self, parentID, agentID, dynamicSkillProvider=None):
         super().__init__(parentID, agentID, dynamicSkillProvider)
