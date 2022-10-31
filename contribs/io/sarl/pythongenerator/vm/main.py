@@ -1,5 +1,6 @@
 from contribs.io.sarl.pythongenerator.vm.AgentWithEvent.agentWithEvent import AgentWithEvent
 from contribs.io.sarl.pythongenerator.vm.GuardedAgent.guardedAgent import GuardedAgent
+from contribs.io.sarl.pythongenerator.vm.HelloWorld.helloWorld import HelloWorldAgent
 from contribs.io.sarl.pythongenerator.vm.Kernel import Kernel
 #from contribs.io.sarl.pythongenerator.vm.HelloWorld.helloWorld import HelloWorldAgent
 from contribs.io.sarl.pythongenerator.vm.LoggingAgent.LoggingAgent import LoggingAgent
@@ -28,4 +29,4 @@ from contribs.io.sarl.pythongenerator.vm.builtin.skill.SreDynamicSkillProvider i
 #myAgentEvents[0](agentWithEvent)
 
 kernel = Kernel()
-kernel.start(LoggingAgent)
+kernel.start(HelloWorldAgent)

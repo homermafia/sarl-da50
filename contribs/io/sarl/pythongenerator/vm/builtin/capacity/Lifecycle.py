@@ -5,5 +5,5 @@ class Lifecycle(Capacity, object):
     def spawn(self, agentClass):
         raise Exception("Unimplemented function")
 
-    def __init__(self):
-        pass
+    def __init__(self, C):
+        super().__init__(C)
