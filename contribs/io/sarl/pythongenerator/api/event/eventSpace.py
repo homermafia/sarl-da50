@@ -5,8 +5,7 @@ import uuid
 import abc
 
 
-# Given that EventSpace implements Space, we do not need to specify that EventSpace inherits ABC
-class EventSpace(Space):
+class EventSpace(Space, abc.ABC):
 
     @abc.abstractmethod
     def emit(self, eventSource: uuid, event: Event):
