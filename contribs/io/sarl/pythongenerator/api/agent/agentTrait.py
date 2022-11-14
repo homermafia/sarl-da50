@@ -1,9 +1,7 @@
-from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
-
 
 class AgentTrait(object):
 
-    def __init__(self, agent: Agent = None):
+    def __init__(self, agent=None):
         self.__agentRef = agent
 
     def setOwner(self, agent):
@@ -20,4 +18,3 @@ class AgentTrait(object):
         if self.__agentRef is None:
             return skill
         self.__agentRef.setSkill(skill, capacities)
-
