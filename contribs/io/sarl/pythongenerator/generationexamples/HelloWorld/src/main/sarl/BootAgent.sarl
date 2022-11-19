@@ -1,7 +1,13 @@
 import io.sarl.core.Initialize
+import io.sarl.core.Logging
+import io.sarl.core.Lifecycle
 
 agent BootAgent {
+	uses Logging
+	uses Lifecycle
+	
 	on Initialize {
-		println("Hello World!")
+		info("Hello World!")
+		killMe
 	}
 }

@@ -1,2 +1,6 @@
 **/.idea/
 **/__pycache__/
+**/.classpath
+**/.project
+**/.settings/
+**/target/classes/
