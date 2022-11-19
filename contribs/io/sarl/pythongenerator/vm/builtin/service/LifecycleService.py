@@ -1,8 +1,8 @@
 import uuid
 
 from contribs.io.sarl.pythongenerator.vm.builtin.EventDispatcher import EventDispatcher
+from contribs.io.sarl.pythongenerator.vm.builtin.event.Destroy import Destroy
 from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initialize
-
 
 class LifecycleService:
 
@@ -20,5 +20,11 @@ class LifecycleService:
         newAgent = agentClass(parentId, uuid.uuid4(), dynamicSkillProvider)
         self.__agents.append(newAgent)
         self.__eventDispatcher.register(newAgent)
-        self.__eventDispatcher.dispatch(newAgent, Initialize)
+        self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
+
+    def killAgent(self, agent, forceKillable, terminationCause):
+        self.__agents.index(agent)
+        self.__eventDispatcher.dispatch(agent, Destroy())
+        self.__eventDispatcher.unregister(agent)
+
 
