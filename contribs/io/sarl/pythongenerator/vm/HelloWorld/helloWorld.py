@@ -40,6 +40,7 @@ class BootAgent(Agent,object):
 #### PYTHON CODE WITH NECESSARY MODIFICATIONS
 
 from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
+from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
 from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Logging import Logging
 from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
 
@@ -51,6 +52,7 @@ class HelloWorldAgent(Agent, object):
         self.getSkill(Logging).info(u"Hello World!i")
         self.getSkill(Logging).warning(u"Hello World!w")
         self.getSkill(Logging).error(u"Hello World!e")
+        self.getSkill(Lifecycle).killMe()
 
         # self.getSkill(Lifecycle).killMe()
 
@@ -58,6 +60,15 @@ class HelloWorldAgent(Agent, object):
         it = occurrence
         __event_handles = list()
         __event_handles.append(self.__on_Initialize__)
+        return __event_handles
+
+    def __on_Destroy__(self, occurrence):
+        self.getSkill(Logging).debug(u"Goodbye World!d")
+
+    def __guard_io_sarl_core_Destroy__(self, occurrence):
+        it = occurrence
+        __event_handles = list()
+        __event_handles.append(self.__on_Destroy__)
         return __event_handles
 
     def __init__(self, parentID, agentID, dynamicSkillProvider=None):

@@ -11,3 +11,6 @@ class LifecycleSkill(Skill, Lifecycle, object):
 
     def spawn(self, agentClass):
         self.__lifecycleService.createAgent(agentClass, self.getOwner().getID())
+
+    def killMe(self, terminationCause=None):
+        self.__lifecycleService.killAgent(self.getOwner(), False, terminationCause)
