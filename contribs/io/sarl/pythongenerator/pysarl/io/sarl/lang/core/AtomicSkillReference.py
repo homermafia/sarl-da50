@@ -1,0 +1,2 @@
+class AtomicSkillReference():
+    pass

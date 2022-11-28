@@ -2,6 +2,7 @@ from contribs.io.sarl.pythongenerator.api.space.spaceID import SpaceID
 import uuid
 
 
+
 class Address(object):
 
     def __init__(self, spaceId: SpaceID, participantId: uuid):

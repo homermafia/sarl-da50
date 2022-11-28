@@ -7,7 +7,7 @@ T = TypeVar('T', bound=SpaceSpecification)
 
 class SpaceID(object):
 
-    def __init__(self, contextID: uuid, identifier: uuid, spaceSpec: T):
+    def __init__(self, contextID: uuid.UUID, identifier: uuid, spaceSpec: T):
         assert (contextID is not None) and (identifier is not None)
         self.__contextID = contextID
         self.__id = identifier

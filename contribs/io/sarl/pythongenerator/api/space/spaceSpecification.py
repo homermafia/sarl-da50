@@ -1,4 +1,4 @@
-from contribs.io.sarl.pythongenerator.api.event.space import Space
+from contribs.io.sarl.pythongenerator.api.space.space import Space
 import abc
 from typing import TypeVar, Generic
 
