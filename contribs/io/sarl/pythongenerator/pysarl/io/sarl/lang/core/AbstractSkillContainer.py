@@ -4,9 +4,9 @@ Created on Tue Oct  4 21:00:29 2022
 
 @author: loic
 """
-from contribs.io.sarl.pythongenerator.api.agent.dynamicSkillProvider import EmptyDynamicSkillProvider
-from contribs.io.sarl.pythongenerator.api.capacity.capacity import Capacity
-from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
+from pysarl.io.sarl.lang.core.DynamicSkillProvider import EmptyDynamicSkillProvider
+from pysarl.io.sarl.lang.core.Capacity import Capacity
+from pysarl.io.sarl.lang.core.Skill import Skill
 
 
 class AbstractSkillContainer(object):
