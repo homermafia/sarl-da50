@@ -1,5 +1,4 @@
-from contribs.io.sarl.pythongenerator.api.agent.agentTrait import AgentTrait
-
+from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
 
 class Skill(AgentTrait):
 

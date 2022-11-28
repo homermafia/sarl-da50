@@ -1,6 +1,6 @@
-from contribs.io.sarl.pythongenerator.api.space.space import Space
-from contribs.io.sarl.pythongenerator.api.event.event import Event
-from contribs.io.sarl.pythongenerator.api.event.address import Address
+from pysarl.io.sarl.lang.core.Space import Space
+from pysarl.io.sarl.lang.core.Event import Event
+from pysarl.io.sarl.lang.core.Address import Address
 import uuid
 import abc
 

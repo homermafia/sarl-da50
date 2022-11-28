@@ -1,4 +1,4 @@
-from contribs.io.sarl.pythongenerator.api.event.spaceSpecification import SpaceSpecification
+from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
 import uuid
 from typing import TypeVar
 
