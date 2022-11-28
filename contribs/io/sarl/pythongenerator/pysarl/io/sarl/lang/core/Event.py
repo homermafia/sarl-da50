@@ -1,4 +1,4 @@
-from contribs.io.sarl.pythongenerator.api.event.address import Address
+from pysarl.io.sarl.lang.core.Address import Address
 import uuid
 
 
