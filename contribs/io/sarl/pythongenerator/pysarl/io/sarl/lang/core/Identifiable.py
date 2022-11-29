@@ -1,2 +1,6 @@
+import uuid
+
 class Identifiable():
-    pass
+
+    def getID(self) -> uuid:
+        pass
