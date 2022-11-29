@@ -5,7 +5,7 @@ from typing import TypeVar, Generic
 T = TypeVar('T', bound=Space)
 
 
-class SpaceSpecification(abc.ABC, Generic[T]):
+class SpaceSpecification(abc.ABC, Generic[T]):#AgentTrait
 
     @abc.abstractmethod
     def create(self, identifier, *params) -> T:

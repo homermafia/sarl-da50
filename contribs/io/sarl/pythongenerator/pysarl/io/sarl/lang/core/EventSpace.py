@@ -5,7 +5,7 @@ import uuid
 import abc
 
 
-class EventSpace(Space, abc.ABC):
+class EventSpace(Space, abc.ABC):#Space
 
     @abc.abstractmethod
     def emit(self, eventSource: uuid, event: Event):
