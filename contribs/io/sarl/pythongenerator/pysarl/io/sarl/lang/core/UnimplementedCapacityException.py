@@ -1,11 +1,11 @@
 import uuid
 
 
-class UnimplementedCapcityException():
+class UnimplementedCapcityException():#RuntimeException
 
-    def __init__(self, callingAgent: uuid): #private final Class<? extends Capacity> unimplementedCapacity;
+    def __init__(self, callingAgent: uuid, unimplementedCapacity): #private final Class<? extends Capacity> unimplementedCapacity;
         self.__callingAgent = callingAgent
-        #self.__unimplementedCapacity = unimplementedCapacity
+        self.__unimplementedCapacity = unimplementedCapacity
 
     """
         @:param
@@ -14,5 +14,4 @@ class UnimplementedCapcityException():
 		return self.callingAgent
 
     def getUnimplementedCapacity(self) :
-		#return self.unimplementedCapacity
-	    pass
+		return self.__unimplementedCapacity

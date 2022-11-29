@@ -6,5 +6,5 @@ class SRESpecificDataContainer():
     def setSreSpecificData(self, data: object):
         self.__sreSpecificData = data
 
-    def getSreSpecificData(self): #(Class<S> type)
+    def getSreSpecificData(self, typeClass): #(Class<S> type)
         pass

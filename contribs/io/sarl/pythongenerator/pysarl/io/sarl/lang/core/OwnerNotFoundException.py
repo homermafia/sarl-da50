@@ -1,6 +1,6 @@
 from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
 
-class OwnerNotFoundException():
+class OwnerNotFoundException(): #RuntimeException
 
     def __init__(self, trait: AgentTrait):
         self.__trait = trait
