@@ -6,7 +6,6 @@ from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 
 class Address(SRESpecificDataContainer):
-    __serialVersionUID: int = 1519844913685586094
     __participantId: UUID
     __spaceId: SpaceID
 
