@@ -30,5 +30,9 @@ class EventDispatcher:
                 attr = getattr(agent, guard)
                 methodsToCall = attr(event)
                 for method in methodsToCall:
-                    method(event)
+                    try:
+                        method(event)
+                    except Exception as e:
+                        return e
+        return None
 
