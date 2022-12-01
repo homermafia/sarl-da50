@@ -1,7 +1,7 @@
 import uuid
 
 
-class UnimplementedCapcityException():#RuntimeException
+class UnimplementedCapacityException():#RuntimeException
 
     def __init__(self, callingAgent: uuid, unimplementedCapacity): #private final Class<? extends Capacity> unimplementedCapacity;
         self.__callingAgent = callingAgent
