@@ -4,7 +4,7 @@ Created on Tue Oct  4 21:00:29 2022
 
 @author: loic
 """
-from typing import TypeVar, Dict
+from typing import TypeVar, Dict, Type
 import abc
 
 from pysarl.io.sarl.lang.core.AgentProtectedAPIObject import AgentProtectedAPIObject
@@ -41,7 +41,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
     def _getSkillRepository(self) -> dict:
         return self.__skillRepository
 
-    def setSkill(self, skill, *capacities) -> S:
+    def setSkill(self, skill: Skill, *capacities: C) -> S:
         self._setSkill(skill, False, *capacities)
         return skill
 
@@ -67,7 +67,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
     def _attachOwner(self, skill: Skill) -> None:
         pass
 
-    def __registerSkill(self, skill: Skill, ifabsent: bool, capacity: Capacity.__class__, firstRef: AtomicSkillReference) -> AtomicSkillReference:
+    def __registerSkill(self, skill: Skill, ifabsent: bool, capacity: Type[Capacity], firstRef: AtomicSkillReference) -> AtomicSkillReference:
         newReference: AtomicSkillReference = None
         if ifabsent:
             if capacity in self._getSkillRepository():
@@ -93,7 +93,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
         assert skill is not None
         return self._castSkill(capacity, skill)
 
-    def _castSkill(self, capacity: Capacity.__class__, skillReference: AtomicSkillReference) -> C:
+    def _castSkill(self, capacity: Type[Capacity], skillReference: AtomicSkillReference) -> C:
         return skillReference.get()
 
     def _getSkill(self, capacity: C) -> AtomicSkillReference:
@@ -124,7 +124,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
             return False
         return True
 
-    def clearSkill(self, capacity: Capacity.__class__) -> C:
+    def clearSkill(self, capacity: Type[Capacity]) -> C:
         assert capacity is not None
 
         if capacity in self._getSkillRepository():
