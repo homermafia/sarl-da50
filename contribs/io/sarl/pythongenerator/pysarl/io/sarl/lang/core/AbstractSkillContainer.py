@@ -16,8 +16,9 @@ from pysarl.io.sarl.lang.core.Identifiable import Identifiable
 from pysarl.io.sarl.lang.core.Skill import Skill
 from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapcityException
 
-C = TypeVar('C', bound=Capacity)
-S = TypeVar('S', bound=Skill)
+C = TypeVar('C', bound=Type[Capacity])
+S = TypeVar('S', bound=Capacity)
+Sk = TypeVar('Sk', bound=Skill)
 
 
 class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
@@ -41,7 +42,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
     def _getSkillRepository(self) -> dict:
         return self.__skillRepository
 
-    def setSkill(self, skill: Skill, *capacities: C) -> S:
+    def setSkill(self, skill: Skill, *capacities: C) -> Sk:
         self._setSkill(skill, False, *capacities)
         return skill
 
@@ -87,7 +88,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
 
         return firstRef
 
-    def getSkill(self, capacity: C) -> C:
+    def getSkill(self, capacity: C) -> S:
         assert capacity is not None and issubclass(capacity, Capacity) and not issubclass(capacity, Skill)
         skill: AtomicSkillReference = self._getSkill(capacity)
         assert skill is not None
@@ -124,7 +125,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
             return False
         return True
 
-    def clearSkill(self, capacity: Type[Capacity]) -> C:
+    def clearSkill(self, capacity: C) -> S:
         assert capacity is not None
 
         if capacity in self._getSkillRepository():
@@ -133,3 +134,6 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
                 skill: Skill = reference.clear()
                 return skill
         return None
+
+    def operator_mappedTo(self, capacity: C, skill: Sk) -> None:
+        self.setSkill(skill, capacity)
