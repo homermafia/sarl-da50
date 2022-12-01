@@ -94,7 +94,8 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
         assert skill is not None
         return self._castSkill(capacity, skill)
 
-    def _castSkill(self, capacity: Type[Capacity], skillReference: AtomicSkillReference) -> C:
+    def _castSkill(self, capacity: C, skillReference: AtomicSkillReference) -> S:
+        # There is no convenient way to cast an object in python. The closest thing is to change the __class__ attribute of the object, but it does not copy it
         return skillReference.get()
 
     def _getSkill(self, capacity: C) -> AtomicSkillReference:
