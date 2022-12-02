@@ -23,12 +23,10 @@ class LifecycleService:
         newAgent = agentClass(parentId, uuid.uuid4(), dynamicSkillProvider)
         self.__agents.append(newAgent)
         self.__eventDispatcher.register(newAgent)
-        error = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
-        if error is not None:
+        errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
+        if len(errors) > 0:
             self.__agents.remove(newAgent)
             self.__eventDispatcher.unregister(newAgent)
-            print("An error occurred during the initialization process of the agent "
-                  + agentClass.__name__ + " :\n" + str(error))
         # We check that the agent hasn't been killed during the Initialize process
         # and we check that no exceptions were thrown during the Initialize process
         if newAgent in self.__agents:

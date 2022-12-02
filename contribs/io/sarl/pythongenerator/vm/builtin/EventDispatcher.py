@@ -3,7 +3,6 @@ from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initial
 
 
 class EventDispatcher:
-
     __listeners = dict()
     __onlyOnSameAgent = [Initialize.__name__, Destroy.__name__]
 
@@ -16,13 +15,14 @@ class EventDispatcher:
             self.__listeners[(agent, event)] = guard
 
     def unregister(self, agent):
-        self.__listeners = {(a, e): g for (a, e), g in self.__listeners.items() if a != agent }
+        self.__listeners = {(a, e): g for (a, e), g in self.__listeners.items() if a != agent}
 
     def dispatch(self, agent, event):
         eventClass = type(event).__name__
         # list all parent classes
         bases = type(event).__bases__
         basesNames = []
+        errors = []
         for b in bases:
             basesNames.append(b.__name__)
         for (a, e), guard in self.__listeners.items():
@@ -33,6 +33,7 @@ class EventDispatcher:
                     try:
                         method(event)
                     except Exception as e:
-                        return e
-        return None
-
+                        errors.append(e)
+                        print("An error occurred during the " + eventClass + " event of the agent "
+                              + type(agent).__name__ + " :\n" + str(e))
+        return errors
