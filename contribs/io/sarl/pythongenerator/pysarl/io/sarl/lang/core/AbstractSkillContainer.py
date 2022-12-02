@@ -23,7 +23,7 @@ Sk = TypeVar('Sk', bound=Skill)
 
 class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
     __skillRepository: Dict[Capacity, AtomicSkillReference]
-    __skillProvider: DynamicSkillProvider = None
+    __skillProvider: DynamicSkillProvider
 
     def __init__(self, skillProvider: DynamicSkillProvider = None):
         self.__skillRepository = dict()

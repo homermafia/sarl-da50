@@ -10,13 +10,13 @@ S = TypeVar('S', bound=Capacity)
 
 
 class Capacities():
-    __CALLER: AgentTrait
+    CALLER: AgentTrait = (lambda a: setattr(a, "agent", None) or a)(threading.local)
 
     def __init__(self):
         pass
 
     def getCaller(self) -> AgentTrait:
-        return Capacities.__CALLER.get()
+        return Capacities.CALLER.agent
 
     def createSkillDelegator(self, originalSkill: Skill, capacity: C, capacityCaller: AgentTrait) -> S:
         # TODO: The implementation of this is much more complex originally.

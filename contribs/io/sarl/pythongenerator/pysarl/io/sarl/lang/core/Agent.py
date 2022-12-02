@@ -13,12 +13,13 @@ from pysarl.io.sarl.lang.core.Skill import Skill
 class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
     __id: UUID
     __parentID: UUID
-    __skillCallback: Callable[["Agent", Skill], None] = None
+    __skillCallback: Callable[["Agent", Skill], None]
 
     def __init__(self, parentID: UUID, agentID: UUID, dynamicSkillProvider: DynamicSkillProvider = None):
         super(Agent, self).__init__(dynamicSkillProvider)
         self.__parentID = parentID
         self.__id = agentID if agentID is not None else UUID()
+        self.__skillCallback = None
 
     def __str__(self) -> str:
         return "Agent{ID:" + str(self.__id) + ", parentID:" + str(self.__parentID) + "}"
