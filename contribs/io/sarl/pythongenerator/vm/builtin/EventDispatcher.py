@@ -1,5 +1,6 @@
 from contribs.io.sarl.pythongenerator.vm.builtin.event.Destroy import Destroy
 from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initialize
+from contribs.io.sarl.pythongenerator.vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class EventDispatcher:
@@ -32,6 +33,8 @@ class EventDispatcher:
                 for method in methodsToCall:
                     try:
                         method(event)
+                    except KillMeException:
+                        pass
                     except Exception as e:
                         errors.append(e)
                         print("An error occurred during the " + eventClass + " event of the agent "

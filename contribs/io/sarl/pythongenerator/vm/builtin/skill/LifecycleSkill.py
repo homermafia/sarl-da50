@@ -1,6 +1,7 @@
 from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
 from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
 from contribs.io.sarl.pythongenerator.vm.builtin.service.LifecycleService import LifecycleService
+from contribs.io.sarl.pythongenerator.vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class LifecycleSkill(Skill, Lifecycle, object):
@@ -14,3 +15,4 @@ class LifecycleSkill(Skill, Lifecycle, object):
 
     def killMe(self, terminationCause=None):
         self.__lifecycleService.killAgent(self.getOwner(), False, terminationCause)
+        raise KillMeException()
