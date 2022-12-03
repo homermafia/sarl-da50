@@ -1,12 +1,12 @@
 from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
-from pysarl.io.sarl.lang.core.SpaceID import SpaceID
+#from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 import uuid
 from typing import TypeVar
 
 T = TypeVar('T', bound=SpaceSpecification)
 
 
-class SpaceID(object):
+class SpaceID():#object):
 
     def __init__(self, contextID: uuid.UUID, identifier: uuid, spaceSpec: T):
         assert (contextID is not None) and (identifier is not None)
@@ -68,11 +68,20 @@ class SpaceID(object):
         return self.equalsID(spaceId)
 
     def clone(self):
-        pass
+        while True:
+                try:
+                    #return (SpaceID) super.clone();
+                    break
+                    pass
+                except Exception:
+                    pass #throw new Error(exception);
 
     """
         @param : SpaceID
         Return : a integer
     """
-    def compareTo(self, otherID: SpaceID) -> int:
-        pass
+    def compareTo(self, otherID) -> int:
+        cmp = self.__contextID.compareTo(otherID.__contextID)
+        if cmp != 0:
+            return cmp
+        return self.__id.compareTo(otherID.__id)
