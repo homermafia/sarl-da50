@@ -1,25 +1,27 @@
-from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
+import abc
+from typing import TypeVar, Type
+
+from pysarl.io.sarl.lang.core.Capacity import Capacity
+from pysarl.io.sarl.lang.core.Skill import Skill
+
+C = TypeVar('C', bound=Type[Capacity])
 
 
-class DynamicSkillProvider:
+class DynamicSkillProvider(abc.ABC):
 
-    def __init__(self):
-        pass
-
-    def createSkill(self, capacity) -> Skill:
+    @abc.abstractmethod
+    def createSkill(self, capacity: C) -> Skill:
         raise Exception("Unimplemented function")
 
-    def isSkillProviding(self, capacity) -> bool:
+    @abc.abstractmethod
+    def isSkillProviding(self, capacity: C) -> bool:
         raise Exception("Unimplemented function")
 
 
 class EmptyDynamicSkillProvider(DynamicSkillProvider):
 
-    def __int__(self):
-        pass
-
-    def createSkill(self, capacity) -> Skill:
+    def createSkill(self, capacity: C) -> Skill:
         return None
 
-    def isSkillProviding(self, capacity) -> bool:
+    def isSkillProviding(self, capacity: C) -> bool:
         return False

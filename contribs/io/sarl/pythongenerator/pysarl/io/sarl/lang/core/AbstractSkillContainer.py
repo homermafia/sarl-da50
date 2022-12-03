@@ -14,7 +14,7 @@ from pysarl.io.sarl.lang.core.DynamicSkillProvider import EmptyDynamicSkillProvi
 from pysarl.io.sarl.lang.core.Capacity import Capacity
 from pysarl.io.sarl.lang.core.Identifiable import Identifiable
 from pysarl.io.sarl.lang.core.Skill import Skill
-from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapcityException
+from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
 C = TypeVar('C', bound=Type[Capacity])
 S = TypeVar('S', bound=Capacity)
@@ -23,7 +23,7 @@ Sk = TypeVar('Sk', bound=Skill)
 
 class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
     __skillRepository: Dict[Capacity, AtomicSkillReference]
-    __skillProvider: DynamicSkillProvider = None
+    __skillProvider: DynamicSkillProvider
 
     def __init__(self, skillProvider: DynamicSkillProvider = None):
         self.__skillRepository = dict()
@@ -95,7 +95,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
         return self._castSkill(capacity, skill)
 
     def _castSkill(self, capacity: C, skillReference: AtomicSkillReference) -> S:
-        # There is no convenient way to cast an object in python. The closest thing is to change the __class__ attribute of the object, but it does not copy it
+        # return capacity.cast(skillReference.get())  # There is no convenient way to cast an object in python. The closest thing is to change the __class__ attribute of the object, but it does not copy it
         return skillReference.get()
 
     def _getSkill(self, capacity: C) -> AtomicSkillReference:
