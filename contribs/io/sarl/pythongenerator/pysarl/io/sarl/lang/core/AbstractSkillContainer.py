@@ -14,7 +14,7 @@ from pysarl.io.sarl.lang.core.DynamicSkillProvider import EmptyDynamicSkillProvi
 from pysarl.io.sarl.lang.core.Capacity import Capacity
 from pysarl.io.sarl.lang.core.Identifiable import Identifiable
 from pysarl.io.sarl.lang.core.Skill import Skill
-from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapcityException
+from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
 C = TypeVar('C', bound=Type[Capacity])
 S = TypeVar('S', bound=Capacity)
