@@ -9,7 +9,7 @@ class event6(Event,object):
 		self.v = u"I can be accessed by types in the same package"
 """
 
-from contribs.io.sarl.pythongenerator.api.event.event import Event
+from pysarl.io.sarl.lang.core.Event import Event
 
 class event6(Event,object):
 	def __init__(self):

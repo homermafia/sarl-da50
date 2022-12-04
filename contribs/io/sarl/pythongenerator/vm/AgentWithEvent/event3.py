@@ -10,7 +10,7 @@ class event3(Event,object):
 		(self.subid += 1)
 """
 
-from contribs.io.sarl.pythongenerator.api.event.event import Event
+from pysarl.io.sarl.lang.core.Event import Event
 
 class event3(Event,object):
 

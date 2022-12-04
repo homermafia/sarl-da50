@@ -9,7 +9,7 @@ class event5(Event,object):
 		self.v = u"I cannot be extended"
 """
 
-from contribs.io.sarl.pythongenerator.api.event.event import Event
+from pysarl.io.sarl.lang.core.Event import Event
 
 class event5(Event, object):
     def __init__(self):

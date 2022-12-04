@@ -15,8 +15,7 @@
 
 #### GENERATES PYTHON CODE WITH NECESSARY MODIFICATION
 
-from contribs.io.sarl.pythongenerator.api.capacity.capacity import Capacity
-
+from pysarl.io.sarl.lang.core.Capacity import Capacity
 
 class Logging(Capacity, object):
     def info(self, text):

@@ -22,11 +22,11 @@
 
 #### GENERATES PYTHON CODE WITH NECESSARY MODIFICATION
 
-from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
-from contribs.io.sarl.pythongenerator.vm.LoggingAgent.LoggingSkill import LoggingSkill
-from contribs.io.sarl.pythongenerator.vm.LoggingAgent.Logging import Logging
-from contribs.io.sarl.pythongenerator.vm.LoggingAgent.SecondAgent import SecondAgent
-from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
+from pysarl.io.sarl.lang.core.Agent import Agent
+from vm.LoggingAgent.LoggingSkill import LoggingSkill
+from vm.LoggingAgent.Logging import Logging
+from vm.LoggingAgent.SecondAgent import SecondAgent
+from vm.builtin.capacity.Lifecycle import Lifecycle
 
 
 class LoggingAgent(Agent, object):

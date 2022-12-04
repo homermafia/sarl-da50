@@ -28,12 +28,11 @@ class AgentWithEvent(Agent,object):
 
 #### GENERATES PYTHON CODE WITH NECESSARY MODIFICATION
 
-from contribs.io.sarl.pythongenerator.api.agent import Agent
-from contribs.io.sarl.pythongenerator.vm.AgentWithEvent.event1 import event1
-from contribs.io.sarl.pythongenerator.vm.AgentWithEvent.event2 import event2
-from contribs.io.sarl.pythongenerator.vm.AgentWithEvent.event3 import event3
-from contribs.io.sarl.pythongenerator.vm.AgentWithEvent.event4 import event4
-
+from pysarl.io.sarl.lang.core.Agent import Agent
+from vm.AgentWithEvent.event1 import event1
+from vm.AgentWithEvent.event2 import event2
+from vm.AgentWithEvent.event3 import event3
+from vm.AgentWithEvent.event4 import event4
 
 class AgentWithEvent(Agent, object):
     def __on_Initialize__(self, occurrence):

@@ -1,13 +1,13 @@
-from contribs.io.sarl.pythongenerator.vm.AgentWithEvent.agentWithEvent import AgentWithEvent
-from contribs.io.sarl.pythongenerator.vm.GuardedAgent.guardedAgent import GuardedAgent
-from contribs.io.sarl.pythongenerator.vm.HelloWorld.helloWorld import HelloWorldAgent
-from contribs.io.sarl.pythongenerator.vm.Kernel import Kernel
+from vm.AgentWithEvent.agentWithEvent import AgentWithEvent
+from vm.GuardedAgent.guardedAgent import GuardedAgent
+from vm.HelloWorld.helloWorld import HelloWorldAgent
+from vm.Kernel import Kernel
 #from contribs.io.sarl.pythongenerator.vm.HelloWorld.helloWorld import HelloWorldAgent
-from contribs.io.sarl.pythongenerator.vm.LoggingAgent.LoggingAgent import LoggingAgent
+from vm.LoggingAgent.LoggingAgent import LoggingAgent
 
 import uuid
 
-from contribs.io.sarl.pythongenerator.vm.builtin.skill.SreDynamicSkillProvider import SreDynamicSkillProvider
+from vm.builtin.skill.SreDynamicSkillProvider import SreDynamicSkillProvider
 
 ### HelloWorld
 # helloWorld = HelloWorldAgent

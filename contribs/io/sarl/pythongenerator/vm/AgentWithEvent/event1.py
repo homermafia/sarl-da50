@@ -9,7 +9,7 @@ class event1(Event,object):
 		pass
 """
 
-from contribs.io.sarl.pythongenerator.api.event.event import Event
+from pysarl.io.sarl.lang.core.Event import Event
 
 class event1(Event,object):
 	def __init__(self):

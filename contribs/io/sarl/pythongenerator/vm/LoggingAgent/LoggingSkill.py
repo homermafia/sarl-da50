@@ -13,9 +13,8 @@
 
 
 #### GENERATES PYTHON CODE WITH NECESSARY MODIFICATION
-from contribs.io.sarl.pythongenerator.vm.LoggingAgent.Logging import Logging
-from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
-
+from vm.LoggingAgent.Logging import Logging
+from pysarl.io.sarl.lang.core.Skill import Skill
 
 class LoggingSkill(Skill, Logging, object):
     def info(self, text):

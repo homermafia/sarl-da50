@@ -1,5 +1,5 @@
-from contribs.io.sarl.pythongenerator.vm.builtin.service.LifecycleService import LifecycleService
-from contribs.io.sarl.pythongenerator.vm.builtin.skill.SreDynamicSkillProvider import SreDynamicSkillProvider
+from vm.builtin.service.LifecycleService import LifecycleService
+from vm.builtin.skill.SreDynamicSkillProvider import SreDynamicSkillProvider
 
 
 class Kernel:

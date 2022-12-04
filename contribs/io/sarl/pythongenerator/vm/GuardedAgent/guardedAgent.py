@@ -22,8 +22,7 @@
 
 #### GENERATES PYTHON CODE WITH NECESSARY MODIFICATION
 
-from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
-
+from pysarl.io.sarl.lang.core.Agent import Agent
 
 class GuardedAgent(Agent, object):
     def __on_Initialize__(self, occurrence):

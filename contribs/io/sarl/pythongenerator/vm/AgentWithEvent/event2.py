@@ -10,7 +10,7 @@ class event2(Event,object):
 		self.subid = 0
 """
 
-from contribs.io.sarl.pythongenerator.api.event.event import Event
+from pysarl.io.sarl.lang.core.Event import Event
 
 class event2(Event,object):
 	def __init__(self):

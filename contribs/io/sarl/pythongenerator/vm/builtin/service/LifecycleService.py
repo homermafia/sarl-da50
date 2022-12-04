@@ -1,8 +1,8 @@
 import uuid
 
-from contribs.io.sarl.pythongenerator.vm.builtin.EventDispatcher import EventDispatcher
-from contribs.io.sarl.pythongenerator.vm.builtin.event.Destroy import Destroy
-from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initialize
+from vm.builtin.EventDispatcher import EventDispatcher
+from vm.builtin.event.Destroy import Destroy
+from vm.builtin.event.Initialize import Initialize
 
 class LifecycleService:
 
