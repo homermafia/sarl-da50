@@ -1,7 +1,7 @@
 from pysarl.io.sarl.lang.core.Skill import Skill
 from vm.builtin.capacity.Lifecycle import Lifecycle
 from vm.builtin.service.LifecycleService import LifecycleService
-from vm.builtin.exceptions.KillMeException import
+from vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class LifecycleSkill(Skill, Lifecycle, object):

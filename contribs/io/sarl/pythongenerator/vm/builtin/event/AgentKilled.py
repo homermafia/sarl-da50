@@ -1,4 +1,4 @@
-from contribs.io.sarl.pythongenerator.api.event.event import Event
+from pysarl.io.sarl.lang.core.Event import Event
 
 
 class AgentKilled(Event):
@@ -12,4 +12,4 @@ class AgentKilled(Event):
         return self.__agentType
 
     def getTerminationCause(self):
-        return self.
+        return self.__terminationCause
