@@ -1,8 +1,9 @@
 from vm.builtin.event.Destroy import Destroy
 from vm.builtin.event.Initialize import Initialize
 
-class EventDispatcher:
 
+
+class EventDispatcher:
     __listeners = dict()
     __onlyOnSameAgent = [Initialize.__name__, Destroy.__name__]
 
@@ -22,6 +23,7 @@ class EventDispatcher:
         # list all parent classes
         bases = type(event).__bases__
         basesNames = []
+        errors = []
         for b in bases:
             basesNames.append(b.__name__)
         for (a, e), guard in self.__listeners.items():
@@ -29,5 +31,12 @@ class EventDispatcher:
                 attr = getattr(agent, guard)
                 methodsToCall = attr(event)
                 for method in methodsToCall:
-                    method(event)
-
+                    try:
+                        method(event)
+                    except KillMeException:
+                        pass
+                    except Exception as e:
+                        errors.append(e)
+                        print("An error occurred during the " + eventClass + " event of the agent "
+                              + type(agent).__name__ + " :\n" + str(e))
+        return errors

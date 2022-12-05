@@ -1,9 +1,9 @@
-from contribs.io.sarl.pythongenerator.api.agent.dynamicSkillProvider import DynamicSkillProvider
-from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
-from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
-from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Logging import Logging
-from contribs.io.sarl.pythongenerator.vm.builtin.skill.LifecycleSkill import LifecycleSkill
-from contribs.io.sarl.pythongenerator.vm.builtin.skill.LoggingSkill import LoggingSkill
+from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
+from pysarl.io.sarl.lang.core.Skill import Skill
+from vm.builtin.capacity.Lifecycle import Lifecycle
+from vm.builtin.capacity.Logging import Logging
+from vm.builtin.skill.LifecycleSkill import LifecycleSkill
+from vm.builtin.skill.LoggingSkill import LoggingSkill
 
 
 class SreDynamicSkillProvider(DynamicSkillProvider):
