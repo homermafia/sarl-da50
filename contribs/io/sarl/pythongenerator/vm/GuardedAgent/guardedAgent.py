@@ -24,6 +24,7 @@
 
 from pysarl.io.sarl.lang.core.Agent import Agent
 
+
 class GuardedAgent(Agent, object):
     def __on_Initialize__(self, occurrence):
         print(u"Initialization without parameters")

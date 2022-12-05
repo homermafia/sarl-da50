@@ -17,6 +17,7 @@
 
 from pysarl.io.sarl.lang.core.Capacity import Capacity
 
+
 class Logging(Capacity, object):
     def info(self, text):
         raise Exception("Unimplemented function")

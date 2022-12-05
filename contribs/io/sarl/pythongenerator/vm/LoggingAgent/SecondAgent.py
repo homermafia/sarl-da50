@@ -3,7 +3,6 @@ from pysarl.io.sarl.lang.core.Agent import Agent
 from vm.LoggingAgent.LoggingSkill import LoggingSkill
 from vm.LoggingAgent.Logging import Logging
 
-
 class SecondAgent(Agent, object):
 
     def __on_Initialize__(self, occurrence):

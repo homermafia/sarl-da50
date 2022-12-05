@@ -1,6 +1,6 @@
 from vm.builtin.event.Destroy import Destroy
 from vm.builtin.event.Initialize import Initialize
-
+from vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class EventDispatcher:

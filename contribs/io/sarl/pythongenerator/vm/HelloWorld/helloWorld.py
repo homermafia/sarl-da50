@@ -39,9 +39,9 @@ class BootAgent(Agent,object):
 
 #### PYTHON CODE WITH NECESSARY MODIFICATIONS
 
-from pysarl.io.sarl.lang.core.Agent import Agent
-from vm.builtin.capacity.Lifecycle import Lifecycle
-from vm.builtin.capacity.Logging import Logging
+from contribs.io.sarl.pythongenerator.api.agent.agent import Agent
+from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Logging import Logging
+from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
 
 
 class HelloWorldAgent(Agent, object):
@@ -49,11 +49,9 @@ class HelloWorldAgent(Agent, object):
     def __on_Initialize__(self, occurrence):
         self.getSkill(Logging).debug(u"Hello World!d")
         self.getSkill(Logging).info(u"Hello World!i")
-        self.getSkill(Logging).warning(u"Hello World!w")
-        self.getSkill(Logging).error(u"Hello World!e")
+        # print(str(5/0))
         self.getSkill(Lifecycle).killMe()
-
-        # self.getSkill(Lifecycle).killMe()
+        print("after killMe nothing should be executed")
 
     def __guard_io_sarl_core_Initialize__(self, occurrence):
         it = occurrence
@@ -68,6 +66,27 @@ class HelloWorldAgent(Agent, object):
         it = occurrence
         __event_handles = list()
         __event_handles.append(self.__on_Destroy__)
+        return __event_handles
+
+    def __on_AgentSpawned__(self, occurrence):
+        skill = self.getSkill(Logging)
+        skill.info("Agent " + str(occurrence.getAgentId()) + " of type " + occurrence.getAgentType()
+                   + " has spawned")
+
+    def __guard_io_sarl_core_AgentSpawned__(self, occurrence):
+        it = occurrence
+        __event_handles = list()
+        __event_handles.append(self.__on_AgentSpawned__)
+        return __event_handles
+
+    def __on_AgentKilled__(self, occurrence):
+        skill = self.getSkill(Logging)
+        skill.info("Agent of type " + occurrence.getAgentType() + " has been killed")
+
+    def __guard_io_sarl_core_AgentKilled__(self, occurrence):
+        it = occurrence
+        __event_handles = list()
+        __event_handles.append(self.__on_AgentKilled__)
         return __event_handles
 
     def __init__(self, parentID, agentID, dynamicSkillProvider=None):
