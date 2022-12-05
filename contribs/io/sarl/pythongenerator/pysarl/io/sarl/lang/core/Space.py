@@ -1,8 +1,30 @@
 import abc
-import uuid
+from typing import Callable
+from uuid import UUID
+
+from multipledispatch import dispatch
+
+from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 
 class Space(abc.ABC):
+
+    @abc.abstractmethod
+    def getSpaceID(self) -> SpaceID:
+        # Replies the Identification of this Interaction Space
+        pass
+
+    @dispatch()
+    @abc.abstractmethod
+    def isPseudoEmpty(self) -> bool:
+        # Replies if the space could be considered as empty
+        return self.getNumberOfStrongParticipants() == 0
+
+    @dispatch(UUID)
+    @abc.abstractmethod
+    def isPseudoEmpty(self, identifier: UUID) -> bool:
+        # Replies if the space is empty or the given identifier is associated to the only one participant to the space
+        pass
 
     @abc.abstractmethod
     def getNumberOfStrongParticipants(self) -> int:
@@ -15,15 +37,9 @@ class Space(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def getSpaceID(self):
-        # Replies the Identification of this Interaction Space
+    def forEachStrongParticipant(self, callback: Callable[[UUID], None]):
         pass
 
-    def isPseudoEmptyDefault(self) -> bool:
-        # Replies if the space could be considered as empty
-        return self.getNumberOfStrongParticipants() == 0
-
     @abc.abstractmethod
-    def isPseudoEmpty(self, identifier: uuid) -> bool:
-        # Replies if the space is empty or the given identifier is associated to the only one participant to the space
+    def forEachWeakParticipant(self, callback: Callable[[UUID], None]) -> None:
         pass

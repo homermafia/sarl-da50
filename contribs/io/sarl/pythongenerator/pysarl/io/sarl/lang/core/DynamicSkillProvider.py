@@ -11,11 +11,11 @@ class DynamicSkillProvider(abc.ABC):
 
     @abc.abstractmethod
     def createSkill(self, capacity: C) -> Skill:
-        raise Exception("Unimplemented function")
+        pass
 
     @abc.abstractmethod
     def isSkillProviding(self, capacity: C) -> bool:
-        raise Exception("Unimplemented function")
+        pass
 
 
 class EmptyDynamicSkillProvider(DynamicSkillProvider):

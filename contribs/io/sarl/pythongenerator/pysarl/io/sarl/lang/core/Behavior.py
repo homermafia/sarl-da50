@@ -1,3 +1,4 @@
+import abc
 from typing import TypeVar, Type
 
 from pysarl.io.sarl.lang.core.Agent import Agent
@@ -13,7 +14,7 @@ C = TypeVar('C', bound=Type[Capacity])
 S = TypeVar('S', bound=Capacity)
 
 
-class Behavior(AgentTrait, IBehaviorGuardEvaluatorReceiver):
+class Behavior(abc.ABC, AgentTrait, IBehaviorGuardEvaluatorReceiver):
 
     def __init__(self, agent: Agent):
         super().__init__(agent)

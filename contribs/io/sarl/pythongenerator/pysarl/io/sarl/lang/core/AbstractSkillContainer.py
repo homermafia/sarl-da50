@@ -21,8 +21,8 @@ S = TypeVar('S', bound=Capacity)
 Sk = TypeVar('Sk', bound=Skill)
 
 
-class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
-    __skillRepository: Dict[Capacity, AtomicSkillReference]
+class AbstractSkillContainer(abc.ABC, AgentProtectedAPIObject, Identifiable):
+    __skillRepository: Dict[C, AtomicSkillReference]
     __skillProvider: DynamicSkillProvider
 
     def __init__(self, skillProvider: DynamicSkillProvider = None):
@@ -115,7 +115,7 @@ class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable):
             return AtomicSkillReference(skill)
 
         # Use the default skill declaration if present
-        raise UnimplementedCapcityException(capacity, self.getID())
+        raise UnimplementedCapacityException(capacity, self.getID())
 
     def hasSkill(self, capacity: C) -> bool:
         assert capacity is not None

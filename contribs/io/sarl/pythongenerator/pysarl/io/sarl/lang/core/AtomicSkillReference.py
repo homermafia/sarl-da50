@@ -7,10 +7,10 @@ from pysarl.io.sarl.lang.core.Skill import Skill
 class AtomicSkillReference():
     __reference: Skill
 
-    def __init__(self, object: Skill):
-        assert object is not None
-        self.__reference = object
-        object.increaseReference()
+    def __init__(self, obj: Skill):
+        assert obj is not None
+        self.__reference = obj
+        obj.increaseReference()
 
     def clone(self) -> "AtomicSkillReference":
         # shallow copy

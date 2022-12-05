@@ -1,6 +1,9 @@
-import uuid
+import abc
+from uuid import UUID
 
-class Identifiable():
 
-    def getID(self) -> uuid:
+class Identifiable(abc.ABC):
+
+    @abc.abstractmethod
+    def getID(self) -> UUID:
         pass

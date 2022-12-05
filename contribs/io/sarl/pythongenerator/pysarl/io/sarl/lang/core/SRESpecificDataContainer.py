@@ -1,10 +1,14 @@
-class SRESpecificDataContainer():
+import abc
+from typing import TypeVar, Type
 
-    def __init__(self, sreSpecificData: object):
-        self.__sreSpecificData = sreSpecificData
+T = TypeVar('T', bound=Type[object])
 
-    def setSreSpecificData(self, data: object):
+
+class SRESpecificDataContainer(abc.ABC):
+    __sreSpecificData: object
+
+    def _getSreSpecificData(self, typeClass: T) -> T:
+        return self.__sreSpecificData
+
+    def _setSreSpecificData(self, data: object) -> None:
         self.__sreSpecificData = data
-
-    def getSreSpecificData(self, typeClass): #(Class<S> type)
-        pass

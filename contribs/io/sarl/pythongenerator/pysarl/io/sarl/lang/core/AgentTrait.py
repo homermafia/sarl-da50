@@ -13,7 +13,7 @@ from pysarl.io.sarl.lang.core.Capacity import Capacity
 from pysarl.io.sarl.lang.core.Event import Event
 from pysarl.io.sarl.lang.core.OwnerNotFoundException import OwnerNotFoundException
 from pysarl.io.sarl.lang.core.Skill import Skill
-from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapcityException
+from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
 C = TypeVar('C', bound=Type[Capacity])
 S = TypeVar('S', bound=Capacity)
@@ -44,7 +44,7 @@ class AgentTrait(abc.ABC, AgentProtectedAPIObject):
     def _castSkill(self, capacity: C, skillReference: AtomicSkillReference) -> S:
         if skillReference is not None:
             return skillReference.get()
-        raise UnimplementedCapcityException(capacity, self.getOwner().getID())
+        raise UnimplementedCapacityException(capacity, self.getOwner().getID())
 
     def _getSkill(self, capacity: C) -> AtomicSkillReference:
         owner: Agent = self.getOwner()
