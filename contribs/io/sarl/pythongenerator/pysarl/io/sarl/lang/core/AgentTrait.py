@@ -1,26 +1,29 @@
+from __future__ import annotations
 import abc
 import weakref
-from typing import TypeVar, Type
+from typing import TypeVar, Type, TYPE_CHECKING
 from uuid import UUID
 
 from multipledispatch import dispatch
 
-from pysarl.io.sarl.lang.core.Address import Address
-from pysarl.io.sarl.lang.core.Agent import Agent
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Address import Address
+    from pysarl.io.sarl.lang.core.Agent import Agent
+    from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.Event import Event
+    from pysarl.io.sarl.lang.core.Skill import Skill
+
+    C = TypeVar('C', bound=Type[Capacity])
+    S = TypeVar('S', bound=Capacity)
+    Sk = TypeVar('Sk', bound=Skill)
+
 from pysarl.io.sarl.lang.core.AgentProtectedAPIObject import AgentProtectedAPIObject
-from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
-from pysarl.io.sarl.lang.core.Capacity import Capacity
-from pysarl.io.sarl.lang.core.Event import Event
 from pysarl.io.sarl.lang.core.OwnerNotFoundException import OwnerNotFoundException
-from pysarl.io.sarl.lang.core.Skill import Skill
 from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
-C = TypeVar('C', bound=Type[Capacity])
-S = TypeVar('S', bound=Capacity)
-Sk = TypeVar('Sk', bound=Skill)
 
-
-class AgentTrait(abc.ABC, AgentProtectedAPIObject):
+class AgentTrait(AgentProtectedAPIObject, abc.ABC):
     __agentRef: weakref
 
     def __init__(self, agent: Agent = None):

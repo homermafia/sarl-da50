@@ -1,8 +1,11 @@
+from __future__ import annotations
 import abc
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Address import Address
 
 from multipledispatch import dispatch
-
-from pysarl.io.sarl.lang.core.Address import Address
 from uuid import UUID
 
 

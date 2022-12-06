@@ -1,10 +1,12 @@
+from __future__ import annotations
 import abc
-from typing import Callable
+from typing import Callable, TYPE_CHECKING
 from uuid import UUID
 
 from multipledispatch import dispatch
 
-from pysarl.io.sarl.lang.core.SpaceID import SpaceID
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 
 class Space(abc.ABC):
@@ -15,7 +17,6 @@ class Space(abc.ABC):
         pass
 
     @dispatch()
-    @abc.abstractmethod
     def isPseudoEmpty(self) -> bool:
         # Replies if the space could be considered as empty
         return self.getNumberOfStrongParticipants() == 0

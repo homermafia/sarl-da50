@@ -1,9 +1,11 @@
+from __future__ import annotations
 from uuid import UUID
-from typing import TypeVar, Type
+from typing import TypeVar, Type, TYPE_CHECKING
 
-from pysarl.io.sarl.lang.core.Capacity import Capacity
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
 
-C = TypeVar('C', bound=Type[Capacity])
+    C = TypeVar('C', bound=Type[Capacity])
 
 
 class UnimplementedCapacityException(Exception):

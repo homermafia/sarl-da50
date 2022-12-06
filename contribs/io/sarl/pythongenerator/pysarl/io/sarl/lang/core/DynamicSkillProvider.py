@@ -1,10 +1,12 @@
+from __future__ import annotations
 import abc
-from typing import TypeVar, Type
+from typing import TypeVar, Type, TYPE_CHECKING
 
-from pysarl.io.sarl.lang.core.Capacity import Capacity
-from pysarl.io.sarl.lang.core.Skill import Skill
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.Skill import Skill
 
-C = TypeVar('C', bound=Type[Capacity])
+    C = TypeVar('C', bound=Type[Capacity])
 
 
 class DynamicSkillProvider(abc.ABC):

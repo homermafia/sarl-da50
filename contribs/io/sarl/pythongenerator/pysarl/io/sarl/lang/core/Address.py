@@ -1,8 +1,12 @@
+from __future__ import annotations
 import copy
 from uuid import UUID
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
-from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 
 class Address(SRESpecificDataContainer):

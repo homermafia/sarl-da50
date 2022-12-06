@@ -1,7 +1,9 @@
+from __future__ import annotations
 import copy
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
-from pysarl.io.sarl.lang.core.Skill import Skill
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Skill import Skill
 
 
 class AtomicSkillReference():

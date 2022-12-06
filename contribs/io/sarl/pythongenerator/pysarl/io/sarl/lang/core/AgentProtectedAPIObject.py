@@ -1,22 +1,26 @@
+from __future__ import annotations
+
 import abc
-from typing import TypeVar, Type
+from typing import TypeVar, Type, TYPE_CHECKING
 from uuid import UUID
 
 from multipledispatch import dispatch
 
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.Event import Event
+    from pysarl.io.sarl.lang.core.Skill import Skill
+
+    C = TypeVar('C', bound=Type[Capacity])
+    S = TypeVar('S', bound=Capacity)
+    Sk = TypeVar('Sk', bound=Skill)
+
 from pysarl.io.sarl.lang.core.Address import Address
-from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
-from pysarl.io.sarl.lang.core.Capacity import Capacity
-from pysarl.io.sarl.lang.core.Event import Event
 from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
-from pysarl.io.sarl.lang.core.Skill import Skill
-
-C = TypeVar('C', bound=Type[Capacity])
-S = TypeVar('S', bound=Capacity)
-Sk = TypeVar('Sk', bound=Skill)
 
 
-class AgentProtectedAPIObject(abc.ABC, SRESpecificDataContainer):
+class AgentProtectedAPIObject(SRESpecificDataContainer, abc.ABC):
 
     @abc.abstractmethod
     def __str__(self) -> str:

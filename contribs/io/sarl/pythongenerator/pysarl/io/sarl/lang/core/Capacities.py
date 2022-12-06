@@ -1,12 +1,14 @@
+from __future__ import annotations
 import threading
-from typing import Type, TypeVar
+from typing import Type, TypeVar, TYPE_CHECKING
 
-from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
-from pysarl.io.sarl.lang.core.Capacity import Capacity
-from pysarl.io.sarl.lang.core.Skill import Skill
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.Skill import Skill
 
-C = TypeVar('C', bound=Type[Capacity])
-S = TypeVar('S', bound=Capacity)
+    C = TypeVar('C', bound=Type[Capacity])
+    S = TypeVar('S', bound=Capacity)
 
 
 class Capacities():

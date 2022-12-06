@@ -1,23 +1,25 @@
+from __future__ import annotations
+from typing import List, Type, Dict, Callable, Set, TypeVar, TYPE_CHECKING
 from multipledispatch import dispatch
 
-from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
-from pysarl.io.sarl.lang.core.Event import Event
-from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
-from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
-from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
-from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
-from pysarl.io.sarl.lang.core.Capacity import Capacity
-from pysarl.io.sarl.lang.core.Skill import Skill
-from pysarl.io.sarl.lang.core.Agent import Agent
-from pysarl.io.sarl.lang.core.Behavior import Behavior
-from typing import List, Type, Dict, Callable, Set
-from typing import TypeVar
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
+    from pysarl.io.sarl.lang.core.Agent import Agent
+    from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
+    from pysarl.io.sarl.lang.core.Behavior import Behavior
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
+    from pysarl.io.sarl.lang.core.Event import Event
+    from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
+    from pysarl.io.sarl.lang.core.Skill import Skill
 
-C = TypeVar('C', bound=Type[object])
-S = TypeVar('S', bound=object)
-Cap = TypeVar('Cap', bound=Type[Capacity])
-CS = TypeVar('CS', bound=Capacity)
-E = TypeVar('E', bound=Type[Event])
+    C = TypeVar('C', bound=Type[object])
+    S = TypeVar('S', bound=object)
+    Cap = TypeVar('Cap', bound=Type[Capacity])
+    CS = TypeVar('CS', bound=Capacity)
+    E = TypeVar('E', bound=Type[Event])
+
+from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
 
 
 class SREutils():

@@ -1,13 +1,16 @@
+from __future__ import annotations
 import abc
-from typing import TypeVar, List, Type
+from typing import TypeVar, List, Type, TYPE_CHECKING
 from uuid import UUID
+
 from multipledispatch import dispatch
 
-from pysarl.io.sarl.lang.core.Space import Space
-from pysarl.io.sarl.lang.core.EventSpace import EventSpace
-from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.EventSpace import EventSpace
+    from pysarl.io.sarl.lang.core.Space import Space
+    from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
 
-T = TypeVar('T', bound=Space)
+    T = TypeVar('T', bound=Space)
 
 
 class AgentContext(abc.ABC):
@@ -28,7 +31,6 @@ class AgentContext(abc.ABC):
     def createSpace(self, spec: Type[SpaceSpecification], spaceUUID: UUID, *creationParams: object) -> T:
         pass
 
-    @abc.abstractmethod
     def getOrCreateSpace(self, spec: Type[SpaceSpecification], spaceUUID: UUID, *creationParams: object) -> T:
         return self.getOrCreateSpaceWithSpec(spec, spaceUUID, *creationParams)
 
@@ -37,7 +39,6 @@ class AgentContext(abc.ABC):
         pass
 
     @dispatch(UUID, SpaceSpecification.__class__, [object])
-    @abc.abstractmethod
     def getOrCreateSpaceWithID(self, spaceUUID: UUID, spec: Type[SpaceSpecification], *creationParams: object) -> T:
         return self.getOrCreateSpaceWithID(spec, spaceUUID, *creationParams)
 

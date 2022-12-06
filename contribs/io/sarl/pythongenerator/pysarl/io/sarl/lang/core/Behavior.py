@@ -1,20 +1,24 @@
+from __future__ import annotations
 import abc
-from typing import TypeVar, Type
 
-from pysarl.io.sarl.lang.core.Agent import Agent
+from typing import TypeVar, Type, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Agent import Agent
+    from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.Skill import Skill
+
+    C = TypeVar('C', bound=Type[Capacity])
+    S = TypeVar('S', bound=Capacity)
+
 from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
-from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
 from pysarl.io.sarl.lang.core.Capacities import Capacities
-from pysarl.io.sarl.lang.core.Capacity import Capacity
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
-from pysarl.io.sarl.lang.core.Skill import Skill
 from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
-C = TypeVar('C', bound=Type[Capacity])
-S = TypeVar('S', bound=Capacity)
 
-
-class Behavior(abc.ABC, AgentTrait, IBehaviorGuardEvaluatorReceiver):
+class Behavior(AgentTrait, IBehaviorGuardEvaluatorReceiver, abc.ABC):
 
     def __init__(self, agent: Agent):
         super().__init__(agent)

@@ -1,12 +1,16 @@
+from __future__ import annotations
 import abc
+from typing import TYPE_CHECKING
 
-from pysarl.io.sarl.lang.core.Agent import Agent
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Agent import Agent
+
 from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
 from pysarl.io.sarl.lang.core.Capacities import Capacities
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
 
 
-class Skill(abc.ABC, AgentTrait, IBehaviorGuardEvaluatorReceiver):
+class Skill(AgentTrait, IBehaviorGuardEvaluatorReceiver, abc.ABC):
     __referencesFromCapacityMap: int
 
     def __init__(self, agent: Agent = None):

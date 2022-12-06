@@ -1,27 +1,24 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct  4 21:00:29 2022
-
-@author: loic
-"""
-from typing import TypeVar, Dict, Type
+from __future__ import annotations
+from typing import TypeVar, Dict, Type, TYPE_CHECKING
 import abc
 
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
+    from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
+    from pysarl.io.sarl.lang.core.Capacity import Capacity
+    from pysarl.io.sarl.lang.core.Skill import Skill
+
+    C = TypeVar('C', bound=Type[Capacity])
+    S = TypeVar('S', bound=Capacity)
+    Sk = TypeVar('Sk', bound=Skill)
+
 from pysarl.io.sarl.lang.core.AgentProtectedAPIObject import AgentProtectedAPIObject
-from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
-from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
 from pysarl.io.sarl.lang.core.DynamicSkillProvider import EmptyDynamicSkillProvider
-from pysarl.io.sarl.lang.core.Capacity import Capacity
 from pysarl.io.sarl.lang.core.Identifiable import Identifiable
-from pysarl.io.sarl.lang.core.Skill import Skill
 from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
-C = TypeVar('C', bound=Type[Capacity])
-S = TypeVar('S', bound=Capacity)
-Sk = TypeVar('Sk', bound=Skill)
 
-
-class AbstractSkillContainer(abc.ABC, AgentProtectedAPIObject, Identifiable):
+class AbstractSkillContainer(AgentProtectedAPIObject, Identifiable, abc.ABC):
     __skillRepository: Dict[C, AtomicSkillReference]
     __skillProvider: DynamicSkillProvider
 

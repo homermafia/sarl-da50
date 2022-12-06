@@ -4,7 +4,7 @@ import abc
 T = TypeVar('T')
 
 
-class Scope(abc.ABC, Generic[T]):
+class Scope(Generic[T], abc.ABC):
 
     @abc.abstractmethod
     def matches(self, element: T) -> bool:
