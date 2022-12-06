@@ -4,7 +4,7 @@ from pysarl.io.sarl.lang.core.Event import Event
 from pysarl.io.sarl.lang.core.AgentContext import AgentContext
 from pysarl.io.sarl.lang.core.Space import Space
 from pysarl.io.sarl.lang.core.SpaceID import SpaceID
-
+from uuid import UUID
 
 class ExternalContextAccess(Capacity):
     """
@@ -25,7 +25,7 @@ class ExternalContextAccess(Capacity):
     Return the AgentContext for the contextID.
     """
 
-    def getContext(self, contextID) -> AgentContext:
+    def getContext(self, contextID: UUID) -> AgentContext:
         pass
 
     """
@@ -53,13 +53,16 @@ class ExternalContextAccess(Capacity):
     def isInSpaceID(self, event: Event, spaceID: SpaceID) -> bool:
         pass
 
+    def isInSpaceUUID(self, event: Event, spaceID: UUID) -> bool:
+        pass
+
     """
     Join a new parent context
     @param : contextID
     @param : expectedDefaultSpaceID
     """
 
-    def join(self, contextID, expectedDefaultSpaceID) -> AgentContext:
+    def join(self, contextID: UUID, expectedDefaultSpaceID: UUID) -> AgentContext:
         pass
 
     """"
@@ -67,5 +70,5 @@ class ExternalContextAccess(Capacity):
     @param : contextID
     """
 
-    def leave(self, contextID) -> bool:
+    def leave(self, contextID: UUID) -> bool:
         pass

@@ -5,7 +5,7 @@ from pysarl.io.sarl.lang.core.Event import Event
 from pysarl.io.sarl.lang.core.Address import Address
 from pysarl.io.sarl.lang.core.AgentContext import AgentContext
 from pysarl.io.sarl.lang.core.EventSpace import EventSpace
-
+from uuid import UUID
 
 class DefaultContextInteractions(Capacity):
     """
@@ -36,7 +36,7 @@ class DefaultContextInteractions(Capacity):
     """
     Return the identifier of the default parent
     """
-    def getDefaultParentID(self):
+    def getDefaultParentID(self) -> UUID:
         pass
 
     """
@@ -62,7 +62,7 @@ class DefaultContextInteractions(Capacity):
     Return true if the identifier correspond
     @param : contextID
     """
-    def isDefaultContext(self, contextID) -> bool:
+    def isDefaultContext(self, contextID: UUID) -> bool:
         pass
 
     """
@@ -80,7 +80,7 @@ class DefaultContextInteractions(Capacity):
     """
         @param : spaceUuid
     """
-    def isDefaultSpace(self, spaceUuid) -> bool:
+    def isDefaultSpace(self, spaceUuid: UUID) -> bool:
         pass
 
     """
@@ -93,5 +93,5 @@ class DefaultContextInteractions(Capacity):
         @param : receiver
         @param : event
     """
-    def willReceive(self, receiver, event: Event):
+    def willReceive(self, receiver: UUID, event: Event):
         pass

@@ -4,6 +4,7 @@ from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 from pysarl.io.sarl.lang.core.Event import Event
 from pysarl.io.sarl.lang.core.AgentContext import AgentContext
 from pysarl.io.sarl.lang.core.EventSpace import EventSpace
+from uuid import UUID
 
 
 class InnerContextAccess(Capacity):
@@ -67,5 +68,5 @@ class InnerContextAccess(Capacity):
     @param : spaceID
     """
 
-    def isInnerDefaultSpace(spaceID) -> bool:
+    def isInnerDefaultSpace(spaceID: UUID) -> bool:
         pass
