@@ -1,4 +1,4 @@
-from pysarl.io.sarl.lang.core.Event import Event
+from contribs.io.sarl.pythongenerator.api.event.event import Event
 
 
 class AgentSpawned(Event):

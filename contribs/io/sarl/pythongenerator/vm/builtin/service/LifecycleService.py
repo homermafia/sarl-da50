@@ -23,12 +23,8 @@ class LifecycleService:
         newAgent = agentClass(parentId, uuid.uuid4(), dynamicSkillProvider)
         self.__agents.append(newAgent)
         self.__eventDispatcher.register(newAgent)
-        errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
-        if len(errors) > 0:
-            self.__agents.remove(newAgent)
-            self.__eventDispatcher.unregister(newAgent)
+        self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
         # We check that the agent hasn't been killed during the Initialize process
-        # and we check that no exceptions were thrown during the Initialize process
         if newAgent in self.__agents:
             self.__eventDispatcher.dispatch(newAgent,
                                             AgentSpawned(None, newAgent.getID(), agentClass.__name__))
@@ -38,3 +34,5 @@ class LifecycleService:
         self.__eventDispatcher.dispatch(agent, Destroy())
         self.__eventDispatcher.dispatch(agent, AgentKilled(None, type(agent).__name__))
         self.__eventDispatcher.unregister(agent)
+
+
