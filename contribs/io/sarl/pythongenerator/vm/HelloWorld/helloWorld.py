@@ -49,7 +49,9 @@ class HelloWorldAgent(Agent, object):
     def __on_Initialize__(self, occurrence):
         self.getSkill(Logging).debug(u"Hello World!d")
         self.getSkill(Logging).info(u"Hello World!i")
+        # print(str(5/0))
         self.getSkill(Lifecycle).killMe()
+        print("after killMe nothing should be executed")
 
     def __guard_io_sarl_core_Initialize__(self, occurrence):
         it = occurrence

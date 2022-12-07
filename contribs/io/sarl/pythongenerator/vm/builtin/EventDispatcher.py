@@ -1,6 +1,6 @@
-from vm.builtin.event.Destroy import Destroy
-from vm.builtin.event.Initialize import Initialize
-from vm.builtin.exceptions.KillMeException import KillMeException
+from contribs.io.sarl.pythongenerator.vm.builtin.event.Destroy import Destroy
+from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initialize
+from contribs.io.sarl.pythongenerator.vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class EventDispatcher:
@@ -16,7 +16,7 @@ class EventDispatcher:
             self.__listeners[(agent, event)] = guard
 
     def unregister(self, agent):
-        self.__listeners = {(a, e): g for (a, e), g in self.__listeners.items() if a != agent }
+        self.__listeners = {(a, e): g for (a, e), g in self.__listeners.items() if a != agent}
 
     def dispatch(self, agent, event):
         eventClass = type(event).__name__
