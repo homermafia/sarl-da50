@@ -1,7 +1,7 @@
 from __future__ import annotations
 import abc
 from typing import List, Callable, Iterable, TYPE_CHECKING
-from collections import Iterable as Iter
+from collections.abc import Iterable as Iter
 
 from multipledispatch import dispatch
 
