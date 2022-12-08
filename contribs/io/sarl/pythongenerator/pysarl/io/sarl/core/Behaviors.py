@@ -1,26 +1,73 @@
+from __future__ import annotations
+import abc
+from typing import List, Callable, Iterable, TYPE_CHECKING
+from collections import Iterable as Iter
+
+from multipledispatch import dispatch
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Address import Address
+    from pysarl.io.sarl.lang.core.EventListener import EventListener
+
+from pysarl.io.sarl.lang.core.Behavior import Behavior
 from pysarl.io.sarl.lang.core.Capacity import Capacity
 from pysarl.io.sarl.lang.core.Event import Event
+from pysarl.io.sarl.lang.core.Scope import Scope
 
 
-class Behaviors(Capacity):
+class Behaviors(Capacity, abc.ABC):
 
-    def __init__(self):
+    @abc.abstractmethod
+    def asEventListener(self) -> EventListener:
         pass
 
-    def asEventListener(self):
+    @abc.abstractmethod
+    def getRegisteredBehaviors(self) -> List[Behavior]:
         pass
 
-    def getRegisteredBehaviors(self):
+    @abc.abstractmethod
+    def hasRegisteredBehavior(self) -> bool:
         pass
 
     """
-    @param : attribute
+        @param : attitude
+        @param : filterRegister
+        @param : initializationParameters
     """
-    def unregisterBehavior(self, attribute):
+    @abc.abstractmethod
+    def registerBehavior(self, attitude: Behavior, filterRegister: Callable[[Event], bool], *initializationParameters: object) -> Behavior:
         pass
+
     """
-    @param : behavior
-    @param : event
+        @param : attribute
     """
-    def wake(self, behavior, event: Event):
+    @abc.abstractmethod
+    def unregisterBehavior(self, attribute: Behavior) -> Behavior:
+        pass
+
+    """
+        @param : behavior
+        @param : event
+    """
+    @dispatch(Behavior, Event)
+    @abc.abstractmethod
+    def wake(self, behavior: Behavior, event: Event):
+        pass
+
+    """
+        @param : event
+        @param : scope
+    """
+    @dispatch(Event, Scope)
+    @abc.abstractmethod
+    def wake(self, event: Event, scope: Scope[Address]):
+        pass
+
+    """
+        @param : behaviors
+        @param : event
+    """
+    @dispatch(Iter, Event)
+    @abc.abstractmethod
+    def wake(self, behaviors: Iterable[Behavior], event: Event):
         pass

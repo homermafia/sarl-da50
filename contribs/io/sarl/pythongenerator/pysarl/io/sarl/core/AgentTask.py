@@ -1,6 +1,9 @@
-from typing import Callable
+from __future__ import annotations
+from typing import Callable, TYPE_CHECKING
 
-from pysarl.io.sarl.lang.core.Agent import Agent
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Agent import Agent
+
 from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
 
 
