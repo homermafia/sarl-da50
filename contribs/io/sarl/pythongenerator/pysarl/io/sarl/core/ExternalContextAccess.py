@@ -26,7 +26,7 @@ class ExternalContextAccess(Capacity, abc.ABC):
     @param : scope
     """
     @abc.abstractmethod
-    def emit(self, space: EventSpace, event: Event, scope: Scope[Address]) -> None:
+    def emit(self, space: EventSpace, event: Event, scope: Scope[Address] = None) -> None:
         pass
 
     @abc.abstractmethod

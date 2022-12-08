@@ -35,7 +35,7 @@ class Behaviors(Capacity, abc.ABC):
         @param : initializationParameters
     """
     @abc.abstractmethod
-    def registerBehavior(self, attitude: Behavior, filterRegister: Callable[[Event], bool], *initializationParameters: object) -> Behavior:
+    def registerBehavior(self, attitude: Behavior, filterRegister: Callable[[Event], bool] = None, *initializationParameters: object) -> Behavior:
         pass
 
     """
@@ -51,7 +51,15 @@ class Behaviors(Capacity, abc.ABC):
     """
     @dispatch(Behavior, Event)
     @abc.abstractmethod
-    def wake(self, behavior: Behavior, event: Event):
+    def wake(self, behavior: Behavior, event: Event) -> None:
+        pass
+
+    """
+        @param : event
+    """
+    @dispatch(Event)
+    @abc.abstractmethod
+    def wake(self, event: Event) -> None:
         pass
 
     """
@@ -60,7 +68,7 @@ class Behaviors(Capacity, abc.ABC):
     """
     @dispatch(Event, Scope)
     @abc.abstractmethod
-    def wake(self, event: Event, scope: Scope[Address]):
+    def wake(self, event: Event, scope: Scope[Address]) -> None:
         pass
 
     """
@@ -69,5 +77,5 @@ class Behaviors(Capacity, abc.ABC):
     """
     @dispatch(Iter, Event)
     @abc.abstractmethod
-    def wake(self, behaviors: Iterable[Behavior], event: Event):
+    def wake(self, behaviors: Iterable[Behavior], event: Event) -> None:
         pass

@@ -28,7 +28,7 @@ class DefaultContextInteractions(Capacity, abc.ABC):
     @param : scope
     """
     @abc.abstractmethod
-    def emit(self, event: Event, scope: Scope[Address]) -> None:
+    def emit(self, event: Event, scope: Scope[Address] = None) -> None:
         pass
 
     """
