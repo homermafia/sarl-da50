@@ -6,8 +6,12 @@ from uuid import UUID
 
 from multipledispatch import dispatch
 
+from pysarl.io.sarl.lang.core.Address import Address
+from pysarl.io.sarl.lang.core.AgentProtectedAPIObject import AgentProtectedAPIObject
+from pysarl.io.sarl.lang.core.OwnerNotFoundException import OwnerNotFoundException
+from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
+
 if TYPE_CHECKING:
-    from pysarl.io.sarl.lang.core.Address import Address
     from pysarl.io.sarl.lang.core.Agent import Agent
     from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
     from pysarl.io.sarl.lang.core.Capacity import Capacity
@@ -18,19 +22,25 @@ if TYPE_CHECKING:
     S = TypeVar('S', bound=Capacity)
     Sk = TypeVar('Sk', bound=Skill)
 
-from pysarl.io.sarl.lang.core.AgentProtectedAPIObject import AgentProtectedAPIObject
-from pysarl.io.sarl.lang.core.OwnerNotFoundException import OwnerNotFoundException
-from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
-
 
 class AgentTrait(AgentProtectedAPIObject, abc.ABC):
-    __agentRef: weakref
+    __agentRef: weakref.ref
 
     def __init__(self, agent: Agent = None):
-        self.__agentRef = weakref.ref(agent)  # WARNING: Cannot create a weak reference to an object of type None
+        # WARNING: Cannot create a weak reference to an object of type None, so we create a callback that returns None
+        if agent is None:
+            self.__agentRef = lambda: None
+        else:
+            self.__agentRef = weakref.ref(agent)
+
+    def __str__(self) -> str:
+        return "AgentTrait{Owner : " + str(self.getOwner()) + "}"
 
     def setOwner(self, agent: Agent) -> None:
-        self.__agentRef = weakref.ref(agent)
+        if agent is None:
+            self.__agentRef = lambda: None
+        else:
+            self.__agentRef = weakref.ref(agent)
 
     def getOwner(self) -> Agent:
         return self.__agentRef()

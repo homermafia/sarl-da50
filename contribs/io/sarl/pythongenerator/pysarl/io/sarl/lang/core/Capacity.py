@@ -2,12 +2,12 @@ from __future__ import annotations
 import abc
 from typing import TypeVar, TYPE_CHECKING
 
+from pysarl.io.sarl.lang.core.Capacities import Capacities
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
 
     S = TypeVar('S', bound="Capacity")
-
-from pysarl.io.sarl.lang.core.Capacities import Capacities
 
 
 class Capacity(abc.ABC):

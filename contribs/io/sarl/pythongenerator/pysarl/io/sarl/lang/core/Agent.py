@@ -3,14 +3,14 @@ from typing import Callable, TYPE_CHECKING
 from uuid import UUID
 from multipledispatch import dispatch
 
+from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
+from pysarl.io.sarl.lang.core.Address import Address
+from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
     from pysarl.io.sarl.lang.core.Event import Event
     from pysarl.io.sarl.lang.core.Skill import Skill
-
-from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
-from pysarl.io.sarl.lang.core.Address import Address
-from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
 
 
 class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):

@@ -3,12 +3,12 @@ from uuid import UUID
 import abc
 from typing import TYPE_CHECKING
 
+from pysarl.io.sarl.lang.core.Space import Space
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.Address import Address
     from pysarl.io.sarl.lang.core.Event import Event
     from pysarl.io.sarl.lang.core.Scope import Scope
-
-from pysarl.io.sarl.lang.core.Space import Space
 
 
 class EventSpace(Space, abc.ABC):

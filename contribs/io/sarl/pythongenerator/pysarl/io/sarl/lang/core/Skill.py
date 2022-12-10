@@ -2,12 +2,12 @@ from __future__ import annotations
 import abc
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from pysarl.io.sarl.lang.core.Agent import Agent
-
 from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
 from pysarl.io.sarl.lang.core.Capacities import Capacities
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Agent import Agent
 
 
 class Skill(AgentTrait, IBehaviorGuardEvaluatorReceiver, abc.ABC):

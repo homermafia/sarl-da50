@@ -3,10 +3,10 @@ import copy
 from uuid import UUID
 from typing import TYPE_CHECKING
 
+from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.SpaceID import SpaceID
-
-from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
 
 
 class Address(SRESpecificDataContainer):

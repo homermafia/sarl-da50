@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 
 
 class Capacities():
-    CALLER: AgentTrait = (lambda a: setattr(a, "agent", None) or a)(threading.local)
+    #CALLER: AgentTrait = (lambda a: setattr(a, "agent", None) or a)(threading.local)
 
     def __init__(self):
         pass

@@ -1,10 +1,10 @@
 import uuid
 
-from contribs.io.sarl.pythongenerator.vm.builtin.EventDispatcher import EventDispatcher
-from contribs.io.sarl.pythongenerator.vm.builtin.event.Destroy import Destroy
-from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initialize
-from contribs.io.sarl.pythongenerator.vm.builtin.event.AgentSpawned import AgentSpawned
-from contribs.io.sarl.pythongenerator.vm.builtin.event.AgentKilled import AgentKilled
+from vm.builtin.EventDispatcher import EventDispatcher
+from vm.builtin.event.Destroy import Destroy
+from vm.builtin.event.Initialize import Initialize
+from vm.builtin.event.AgentSpawned import AgentSpawned
+from vm.builtin.event.AgentKilled import AgentKilled
 
 
 class LifecycleService:

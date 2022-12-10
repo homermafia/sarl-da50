@@ -2,6 +2,8 @@ from __future__ import annotations
 from typing import List, Type, Dict, Callable, Set, TypeVar, TYPE_CHECKING
 from multipledispatch import dispatch
 
+from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
     from pysarl.io.sarl.lang.core.Agent import Agent
@@ -18,8 +20,6 @@ if TYPE_CHECKING:
     Cap = TypeVar('Cap', bound=Type[Capacity])
     CS = TypeVar('CS', bound=Capacity)
     E = TypeVar('E', bound=Type[Event])
-
-from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
 
 
 class SREutils():
@@ -91,7 +91,7 @@ class SREutils():
         @param provider the provider.
     """
     def setDynamicSkillProvider(self, container: AbstractSkillContainer, provider: DynamicSkillProvider) -> None:
-        container.setDynamicSkillProvider(provider)
+        container._setDynamicSkillProvider(provider)
 
     """
         @param skill to be installed.

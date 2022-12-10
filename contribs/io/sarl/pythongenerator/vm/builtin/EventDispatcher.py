@@ -1,6 +1,6 @@
-from contribs.io.sarl.pythongenerator.vm.builtin.event.Destroy import Destroy
-from contribs.io.sarl.pythongenerator.vm.builtin.event.Initialize import Initialize
-from contribs.io.sarl.pythongenerator.vm.builtin.exceptions.KillMeException import KillMeException
+from vm.builtin.event.Destroy import Destroy
+from vm.builtin.event.Initialize import Initialize
+from vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class EventDispatcher:

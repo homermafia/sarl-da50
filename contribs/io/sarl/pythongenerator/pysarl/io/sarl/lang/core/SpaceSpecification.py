@@ -2,11 +2,11 @@ from __future__ import annotations
 import abc
 from typing import TypeVar, Generic, TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from pysarl.io.sarl.lang.core.SpaceID import SpaceID
-
 from pysarl.io.sarl.lang.core.Space import Space
 T = TypeVar('T', bound=Space)
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 
 class SpaceSpecification(Generic[T], abc.ABC):

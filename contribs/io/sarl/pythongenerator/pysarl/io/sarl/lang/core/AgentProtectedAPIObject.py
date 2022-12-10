@@ -6,6 +6,9 @@ from uuid import UUID
 
 from multipledispatch import dispatch
 
+from pysarl.io.sarl.lang.core.Address import Address
+from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
     from pysarl.io.sarl.lang.core.Capacity import Capacity
@@ -15,9 +18,6 @@ if TYPE_CHECKING:
     C = TypeVar('C', bound=Type[Capacity])
     S = TypeVar('S', bound=Capacity)
     Sk = TypeVar('Sk', bound=Skill)
-
-from pysarl.io.sarl.lang.core.Address import Address
-from pysarl.io.sarl.lang.core.SRESpecificDataContainer import SRESpecificDataContainer
 
 
 class AgentProtectedAPIObject(SRESpecificDataContainer, abc.ABC):

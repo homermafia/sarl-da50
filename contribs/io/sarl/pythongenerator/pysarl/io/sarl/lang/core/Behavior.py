@@ -3,6 +3,11 @@ import abc
 
 from typing import TypeVar, Type, TYPE_CHECKING
 
+from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
+from pysarl.io.sarl.lang.core.Capacities import Capacities
+from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
+from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
+
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.Agent import Agent
     from pysarl.io.sarl.lang.core.AtomicSkillReference import AtomicSkillReference
@@ -11,11 +16,6 @@ if TYPE_CHECKING:
 
     C = TypeVar('C', bound=Type[Capacity])
     S = TypeVar('S', bound=Capacity)
-
-from pysarl.io.sarl.lang.core.AgentTrait import AgentTrait
-from pysarl.io.sarl.lang.core.Capacities import Capacities
-from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
-from pysarl.io.sarl.lang.core.UnimplementedCapacityException import UnimplementedCapacityException
 
 
 class Behavior(AgentTrait, IBehaviorGuardEvaluatorReceiver, abc.ABC):

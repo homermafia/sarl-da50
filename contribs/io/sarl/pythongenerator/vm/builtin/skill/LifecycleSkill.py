@@ -1,7 +1,7 @@
-from contribs.io.sarl.pythongenerator.api.agent.skill import Skill
-from contribs.io.sarl.pythongenerator.vm.builtin.capacity.Lifecycle import Lifecycle
-from contribs.io.sarl.pythongenerator.vm.builtin.service.LifecycleService import LifecycleService
-from contribs.io.sarl.pythongenerator.vm.builtin.exceptions.KillMeException import KillMeException
+from pysarl.io.sarl.lang.core.Skill import Skill
+from vm.builtin.capacity.Lifecycle import Lifecycle
+from vm.builtin.service.LifecycleService import LifecycleService
+from vm.builtin.exceptions.KillMeException import KillMeException
 
 
 class LifecycleSkill(Skill, Lifecycle, object):
