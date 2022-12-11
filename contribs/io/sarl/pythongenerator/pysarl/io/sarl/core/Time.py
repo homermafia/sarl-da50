@@ -1,37 +1,45 @@
+import abc
+
 from pysarl.io.sarl.lang.core.Capacity import Capacity
 
 
-class Time(Capacity):
+class Time(Capacity, abc.ABC):
+
     """
     @param : timeDuration
     """
-
-    def fromOSDuration(self, timeDuration):
+    @abc.abstractmethod
+    def fromOSDuration(self, timeDuration: float) -> float:
         pass
 
     """
         @param : timeValue
     """
-
-    def fromOSTime(self, timeValue):
+    @abc.abstractmethod
+    def fromOSTime(self, timeValue: float) -> float:
         pass
 
-    def getOSTimeFactor(self):
-        pass
-
-    def getTime(self):
+    @abc.abstractmethod
+    def getOSTimeFactor(self) -> float:
         pass
 
     """
         @param : timeDuration
     """
+    @abc.abstractmethod
+    def getTime(self, timeUnit = None) -> float:
+        pass
 
-    def toOSDuration(self, timeDuration):
+    """
+        @param : timeDuration
+    """
+    @abc.abstractmethod
+    def toOSDuration(self, timeDuration: float) -> float:
         pass
 
     """
         @param : timeValue
    """
-
-    def toOSTime(self, timeValue):
+    @abc.abstractmethod
+    def toOSTime(self, timeValue: float) -> float:
         pass
