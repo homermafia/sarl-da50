@@ -8,9 +8,10 @@ from multipledispatch import dispatch
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.EventSpace import EventSpace
     from pysarl.io.sarl.lang.core.Space import Space
-    from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
 
     T = TypeVar('T', bound=Space)
+
+from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
 
 
 class AgentContext(abc.ABC):

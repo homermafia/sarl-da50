@@ -1,7 +1,7 @@
+from pysarl.io.sarl.core.Lifecycle import Lifecycle
+from pysarl.io.sarl.core.Logging import Logging
 from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
 from pysarl.io.sarl.lang.core.Skill import Skill
-from vm.builtin.capacity.Lifecycle import Lifecycle
-from vm.builtin.capacity.Logging import Logging
 from vm.builtin.skill.LifecycleSkill import LifecycleSkill
 from vm.builtin.skill.LoggingSkill import LoggingSkill
 

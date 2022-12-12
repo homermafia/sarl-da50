@@ -40,8 +40,8 @@ class BootAgent(Agent,object):
 #### PYTHON CODE WITH NECESSARY MODIFICATIONS
 
 from pysarl.io.sarl.lang.core.Agent import Agent
-from vm.builtin.capacity.Logging import Logging
-from vm.builtin.capacity.Lifecycle import Lifecycle
+from pysarl.io.sarl.core.Lifecycle import Lifecycle
+from pysarl.io.sarl.core.Logging import Logging
 
 
 class HelloWorldAgent(Agent, object):
