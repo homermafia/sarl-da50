@@ -1,6 +1,7 @@
+import abc
+
+from pysarl.io.sarl.lang.core.SpaceSpecification import SpaceSpecification
 
 
-class OpenEventSpaceSpecification:
-
-    def create(self):
-        pass
+class OpenEventSpaceSpecification(SpaceSpecification, abc.ABC):
+    pass

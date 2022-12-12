@@ -1,11 +1,14 @@
+import abc
+from typing import Callable, Set, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pysarl.io.sarl.lang.core.Agent import Agent
+    from pysarl.io.sarl.core.AgentTask import AgentTask
+
 from pysarl.io.sarl.lang.core.Capacity import Capacity
-from pysarl.io.sarl.core.AgentTask import AgentTask
 
 
-class Schedules(Capacity):
-
-    def __init__(self, name: str):
-        self.__name = name
+class Schedules(Capacity, abc.ABC):
 
     """
     Schedule a task to be executed at a time.
@@ -13,8 +16,8 @@ class Schedules(Capacity):
     @param : time
     @param : procedure
     """
-
-    def at(self, task: AgentTask, time, procedure) -> AgentTask:
+    @abc.abstractmethod
+    def at(self, task: AgentTask, time: int, procedure: Callable[[Agent], None]) -> AgentTask:
         pass
 
     """
@@ -23,8 +26,8 @@ class Schedules(Capacity):
     @param : delay
     @param : procedure
     """
-
-    def atFixedDelay(self, task: AgentTask, delay, procedure) -> AgentTask:
+    @abc.abstractmethod
+    def atFixedDelay(self, task: AgentTask, delay: int, procedure: Callable[[Agent], None]) -> AgentTask:
         pass
 
     """
@@ -32,7 +35,7 @@ class Schedules(Capacity):
     @param : task
     @param : mayInterruptIfRunning
     """
-
+    @abc.abstractmethod
     def cancel(self, task: AgentTask, mayInterruptIfRunning: bool) -> bool:
         pass
 
@@ -42,8 +45,8 @@ class Schedules(Capacity):
     @param : period
     @param : procedure
     """
-
-    def every(self, task: AgentTask, period, procedure) -> AgentTask:
+    @abc.abstractmethod
+    def every(self, task: AgentTask, period: int, procedure: Callable[[Agent], None]) -> AgentTask:
         pass
 
     """
@@ -51,15 +54,15 @@ class Schedules(Capacity):
     @param : task
     @param : procedure
     """
-
-    def execute(self, task: AgentTask, procedure) -> AgentTask:
+    @abc.abstractmethod
+    def execute(self, task: AgentTask, procedure: Callable[[Agent], None]) -> AgentTask:
         pass
 
     """
     Return the name of the active tasks
     """
-
-    def getActiveTasks(self):
+    @abc.abstractmethod
+    def getActiveTasks(self) -> Set[str]:
         pass
 
     """
@@ -68,14 +71,14 @@ class Schedules(Capacity):
     @param : delay
     @param : procedure
     """
-
-    def inTask(self, task: AgentTask, delay, procedure) -> AgentTask:
+    @abc.abstractmethod
+    def _in(self, task: AgentTask, delay: int, procedure: Callable[[Agent], None]) -> AgentTask:
         pass
 
     """
     @param : task
     """
-
+    @abc.abstractmethod
     def isCanceled(self, task: AgentTask) -> bool:
         pass
 
@@ -84,14 +87,14 @@ class Schedules(Capacity):
     @param : name
     @param : task
     """
-
-    def setName(self, name: str, task: AgentTask):
-        task.setTaskName(name)
+    @abc.abstractmethod
+    def setName(self, task: AgentTask, name: str) -> None:
+        pass
 
     """
     Create a named task that can be retrieved and schedule later.
     @param : name
     """
-
+    @abc.abstractmethod
     def task(self, name: str) -> AgentTask:
         pass
