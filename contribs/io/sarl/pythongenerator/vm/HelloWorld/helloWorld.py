@@ -70,7 +70,7 @@ class HelloWorldAgent(Agent, object):
 
     def __on_AgentSpawned__(self, occurrence):
         skill = self.getSkill(Logging)
-        skill.info("Agent " + str(occurrence.getAgentId()) + " of type " + occurrence.getAgentType()
+        skill.info("Agent " + str(occurrence.getAgentId()) + " of type " + occurrence.agentType
                    + " has spawned")
 
     def __guard_io_sarl_core_AgentSpawned__(self, occurrence):
@@ -81,7 +81,7 @@ class HelloWorldAgent(Agent, object):
 
     def __on_AgentKilled__(self, occurrence):
         skill = self.getSkill(Logging)
-        skill.info("Agent of type " + occurrence.getAgentType() + " has been killed")
+        skill.info("Agent of type " + occurrence.agentType + " has been killed")
 
     def __guard_io_sarl_core_AgentKilled__(self, occurrence):
         it = occurrence

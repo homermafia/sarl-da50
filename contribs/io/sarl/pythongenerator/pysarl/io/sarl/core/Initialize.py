@@ -17,7 +17,7 @@ class Initialize(Event):
         self.parameters = params
         self.spawner = spawner
 
-    @dispatch(UUID, [object])
+    @dispatch(object, [object])  # Dispatching object in first argument instead of UUID because spawner can be None
     def __init__(self, spawner: UUID, *params: object):
         super().__init__()
         self.parameters = params

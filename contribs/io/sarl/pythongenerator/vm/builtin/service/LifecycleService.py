@@ -1,14 +1,13 @@
 import uuid
 
+from pysarl.io.sarl.core.AgentKilled import AgentKilled
+from pysarl.io.sarl.core.AgentSpawned import AgentSpawned
+from pysarl.io.sarl.core.Destroy import Destroy
+from pysarl.io.sarl.core.Initialize import Initialize
 from vm.builtin.EventDispatcher import EventDispatcher
-from vm.builtin.event.Destroy import Destroy
-from vm.builtin.event.Initialize import Initialize
-from vm.builtin.event.AgentSpawned import AgentSpawned
-from vm.builtin.event.AgentKilled import AgentKilled
 
 
 class LifecycleService:
-
     __agents = []
     __defaultDynamicSkillProvider = None
     __eventDispatcher = None
@@ -36,7 +35,5 @@ class LifecycleService:
     def killAgent(self, agent, forceKillable, terminationCause):
         self.__agents.remove(agent)
         self.__eventDispatcher.dispatch(agent, Destroy())
-        self.__eventDispatcher.dispatch(agent, AgentKilled(None, type(agent).__name__))
+        self.__eventDispatcher.dispatch(agent, AgentKilled(None, type(agent).__name__, terminationCause))
         self.__eventDispatcher.unregister(agent)
-
-
