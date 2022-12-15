@@ -1,5 +1,5 @@
-from vm.builtin.event.Destroy import Destroy
-from vm.builtin.event.Initialize import Initialize
+from pysarl.io.sarl.core.Destroy import Destroy
+from pysarl.io.sarl.core.Initialize import Initialize
 from vm.builtin.exceptions.KillMeException import KillMeException
 
 

@@ -70,7 +70,7 @@ class HelloWorldAgent(Agent, object):
 
     def __on_AgentSpawned__(self, occurrence):
         skill = self.getSkill(Logging)
-        skill.info("Agent " + str(occurrence.getAgentId()) + " of type " + occurrence.agentType
+        skill.info("Agent " + str(occurrence.agentID) + " of type " + occurrence.agentType
                    + " has spawned")
 
     def __guard_io_sarl_core_AgentSpawned__(self, occurrence):
