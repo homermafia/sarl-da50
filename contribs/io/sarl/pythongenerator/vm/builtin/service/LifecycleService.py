@@ -37,3 +37,7 @@ class LifecycleService:
         self.__eventDispatcher.dispatch(agent, Destroy())
         self.__eventDispatcher.dispatch(agent, AgentKilled(None, type(agent).__name__, terminationCause))
         self.__eventDispatcher.unregister(agent)
+
+    def killAgentsLeft(self):
+        for a in self.__agents:
+            self.killAgent(a, False, "End of the program")

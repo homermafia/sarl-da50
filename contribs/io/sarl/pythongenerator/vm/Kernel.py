@@ -9,3 +9,4 @@ class Kernel:
 
     def start(self, bootAgentClass):
         self.__lifecycleService.createAgent(bootAgentClass)
+        self.__lifecycleService.killAgentsLeft()
