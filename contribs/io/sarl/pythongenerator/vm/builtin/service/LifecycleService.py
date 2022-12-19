@@ -5,8 +5,10 @@ from pysarl.io.sarl.core.AgentSpawned import AgentSpawned
 from pysarl.io.sarl.core.Destroy import Destroy
 from pysarl.io.sarl.core.Initialize import Initialize
 from vm.builtin.EventDispatcher import EventDispatcher
+from vm.utils.singleton import singleton
 
 
+@singleton
 class LifecycleService:
     __agents = []
     __defaultDynamicSkillProvider = None

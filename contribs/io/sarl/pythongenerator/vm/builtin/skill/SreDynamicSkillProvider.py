@@ -10,13 +10,13 @@ class SreDynamicSkillProvider(DynamicSkillProvider):
 
     def __init__(self):
         super().__init__()
-        self.__skillsDict = {
-            Lifecycle: LifecycleSkill(self),
-            Logging: LoggingSkill()
-        }
 
     def createSkill(self, capacity) -> Skill:
-        return self.__skillsDict[capacity]
+        if capacity == Lifecycle:
+            return LifecycleSkill(self)
+        elif capacity == Logging:
+            return LoggingSkill()
 
     def isSkillProviding(self, capacity) -> bool:
-        return self.__skillsDict.keys().__contains__(capacity)
+        return capacity == Lifecycle \
+               or capacity == Logging
