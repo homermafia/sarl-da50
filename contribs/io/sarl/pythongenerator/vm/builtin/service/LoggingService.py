@@ -8,7 +8,6 @@ from vm.utils.singleton import singleton
 class LoggingService:
 
     def __init__(self):
-        print("ok")
         self.__streamHandler = logging.StreamHandler()
         self.__logger = logging.getLogger("Logger")
         self.__logger.addHandler(self.__streamHandler)
