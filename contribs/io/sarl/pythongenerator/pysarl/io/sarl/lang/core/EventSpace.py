@@ -1,6 +1,7 @@
 from __future__ import annotations
+
+from abc import ABC
 from uuid import UUID
-import abc
 from typing import TYPE_CHECKING
 
 from pysarl.io.sarl.lang.core.Space import Space
@@ -11,14 +12,23 @@ if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.Scope import Scope
 
 
-class EventSpace(Space, abc.ABC):
+class EventSpace(Space, ABC):
 
-    @abc.abstractmethod
+    def __init__(self):
+        self.participant = [] # list of agents
+
     def getAddress(self, identifier: UUID) -> Address:
         # Returns the address of the agent identified by id
         pass
 
-    @abc.abstractmethod
-    def emit(self, eventSource: UUID, event: Event, scope: Scope = None) -> None:
-        # Emits the event inside this space with the given scope
+    def emit(self, agent, event):
+
         pass
+
+    def register(self, agent):
+        self.participant.append(agent)
+
+    def getParticipants(self):
+        return self.participant
+
+
