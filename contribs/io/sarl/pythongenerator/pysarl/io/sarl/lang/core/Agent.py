@@ -35,6 +35,10 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
     def setSkillCallback(self, callback: Callable[["Agent", Skill], None]) -> None:
         self.__skillCallback = callback
 
+    def setBIC(self, bic: [Skill]):
+        for i in bic:
+            self.setSkill(i)
+
     def getParentID(self) -> UUID:
         return self.__parentID
 
