@@ -6,6 +6,7 @@ from multipledispatch import dispatch
 from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
 from pysarl.io.sarl.lang.core.Address import Address
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
+from vm.builtin.service.Context import Context
 
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
@@ -38,6 +39,10 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
     def setBIC(self, bic: [Skill]):
         for i in bic:
             self.setSkill(i)
+
+    # Temporary, we should add a defaultContext attribute to Agent
+    def getDefaultContext(self) -> Context:
+        return Context()
 
     def getParentID(self) -> UUID:
         return self.__parentID
