@@ -17,7 +17,7 @@ class DefaultContextInteractionsSkill(Skill, DefaultContextInteractions, ABC):
     def emit(self, event):
         dc = self.getDefaultContext()
         ds = dc.getDefaultSpace()
-        print(dc, ds)
+        ds.emit(self.getOwner(), event)
 
     def getDefaultContext(self):
         return self.getOwner().getDefaultContext()
@@ -32,7 +32,7 @@ class DefaultContextInteractionsSkill(Skill, DefaultContextInteractions, ABC):
         return None
 
     def getDefaultParentID(self) -> UUID:
-        return  self.getParentID()
+        return self.getParentID()
 
     def getDefaultParentScope(self) -> Scope[Address]:
         return None
