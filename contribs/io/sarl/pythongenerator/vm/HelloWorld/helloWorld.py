@@ -18,6 +18,8 @@ class BootAgent(Agent,object):
 	def __init__(self):
 		pass
 """
+from pysarl.io.sarl.core.DefaultContextInteractions import DefaultContextInteractions
+from vm.builtin.skill.DefaultContextInteractionsSkill import DefaultContextInteractionsSkill
 
 #### GENERATED PYTHON CODE OF THE FIRST VERSION OF HELLOWORLD
 """

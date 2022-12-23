@@ -23,8 +23,6 @@ class LifecycleService:
         if dynamicSkillProvider is None:
             dynamicSkillProvider = self.__defaultDynamicSkillProvider
         newAgent = agentClass(parentId, uuid.uuid4(), dynamicSkillProvider)
-        bic = [DefaultContextInteractionsSkill()]
-        newAgent.setBic(bic)
         self.__agents.append(newAgent)
         self.__eventDispatcher.register(newAgent)
         errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
@@ -36,6 +34,7 @@ class LifecycleService:
         if newAgent in self.__agents:
             self.__eventDispatcher.dispatch(newAgent,
                                             AgentSpawned(None, newAgent.getID(), agentClass.__name__))
+
 
     def killAgent(self, agent, forceKillable, terminationCause):
         self.__agents.remove(agent)

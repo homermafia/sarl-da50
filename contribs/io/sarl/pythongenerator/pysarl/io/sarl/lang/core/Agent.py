@@ -3,10 +3,12 @@ from typing import Callable, TYPE_CHECKING
 from uuid import UUID
 from multipledispatch import dispatch
 
+from pysarl.io.sarl.core.DefaultContextInteractions import DefaultContextInteractions
 from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
 from pysarl.io.sarl.lang.core.Address import Address
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
 from vm.builtin.service.Context import Context
+from vm.builtin.skill.DefaultContextInteractionsSkill import DefaultContextInteractionsSkill
 
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
@@ -35,10 +37,6 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
 
     def setSkillCallback(self, callback: Callable[["Agent", Skill], None]) -> None:
         self.__skillCallback = callback
-
-    def setBIC(self, bic: [Skill]):
-        for i in bic:
-            self.setSkill(i)
 
     # Temporary, we should add a defaultContext attribute to Agent
     def getDefaultContext(self) -> Context:

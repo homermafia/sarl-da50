@@ -60,87 +60,87 @@ class DefaultContextInteractions(Capacity, abc.ABC):
     def getDefaultParentID(self) -> UUID:
         pass
 
-    """
-    Return the event scope 
-    """
-    @abc.abstractmethod
-    def getDefaultParentScope(self) -> Scope[Address]:
-        pass
-
-    """
-    Return the default space of the default context
-    """
-    @abc.abstractmethod
-    def getDefaultSpace(self) -> EventSpace:
-        pass
-
-    """
-    Replies if the given context is the default context.
-    @param : context
-    """
-    @dispatch(AgentContext)
-    @abc.abstractmethod
-    def isDefaultContext(self, context: AgentContext) -> bool:
-        pass
-
-    """
-    Replies if the given identifier is the identifier of the default context.
-    @param : contextID
-    """
-    @dispatch(UUID)
-    @abc.abstractmethod
-    def isDefaultContext(self, contextID: UUID) -> bool:
-        pass
-
-    """
-    Replies if the given space is the default space of the default context.
-    @param : space
-    """
-    @dispatch(Space)
-    @abc.abstractmethod
-    def isDefaultSpace(self, space: Space) -> bool:
-        pass
-    """
-    Replies if the given identifier is the identifier of the default space of the default context.
-    @param : spaceID
-    """
-    @dispatch(SpaceID)
-    @abc.abstractmethod
-    def isDefaultSpace(self, space: SpaceID) -> bool:
-        pass
-
-    """
-    Replies if the given identifier is the identifier of the default space of the default context.
-    @param : spaceUuid
-    """
-    @dispatch(UUID)
-    @abc.abstractmethod
-    def isDefaultSpace(self, space: UUID) -> bool:
-        pass
-
-    """
-    Replies if the given event was emitted in the default space of the default context.
-    @param : event
-    """
-    @abc.abstractmethod
-    def isInDefaultSpace(self, event: Event) -> bool:
-        pass
-
-    """
-    Deprecated
-    See the Lifecycle capacity.
-    @param : event
-    """
-    @abc.abstractmethod
-    def spawn(self, agentType: A, *params: object) -> UUID:
-        pass
-
-    """
-    Deprecated
-    since 0.11, see DefaultContextInteractions.emit(Event,Scope)
-    @param : receiver
-    @param : event
-    """
-    @abc.abstractmethod
-    def willReceive(self, receiver: UUID, event: Event) -> None:
-        pass
+    # """
+    # Return the event scope
+    # """
+    # @abc.abstractmethod
+    # def getDefaultParentScope(self) -> Scope[Address]:
+    #     pass
+    #
+    # """
+    # Return the default space of the default context
+    # """
+    # @abc.abstractmethod
+    # def getDefaultSpace(self) -> EventSpace:
+    #     pass
+    #
+    # """
+    # Replies if the given context is the default context.
+    # @param : context
+    # """
+    # @dispatch(AgentContext)
+    # @abc.abstractmethod
+    # def isDefaultContext(self, context: AgentContext) -> bool:
+    #     pass
+    #
+    # """
+    # Replies if the given identifier is the identifier of the default context.
+    # @param : contextID
+    # """
+    # @dispatch(UUID)
+    # @abc.abstractmethod
+    # def isDefaultContext(self, contextID: UUID) -> bool:
+    #     pass
+    #
+    # """
+    # Replies if the given space is the default space of the default context.
+    # @param : space
+    # """
+    # @dispatch(Space)
+    # @abc.abstractmethod
+    # def isDefaultSpace(self, space: Space) -> bool:
+    #     pass
+    # """
+    # Replies if the given identifier is the identifier of the default space of the default context.
+    # @param : spaceID
+    # """
+    # @dispatch(SpaceID)
+    # @abc.abstractmethod
+    # def isDefaultSpace(self, space: SpaceID) -> bool:
+    #     pass
+    #
+    # """
+    # Replies if the given identifier is the identifier of the default space of the default context.
+    # @param : spaceUuid
+    # """
+    # @dispatch(UUID)
+    # @abc.abstractmethod
+    # def isDefaultSpace(self, space: UUID) -> bool:
+    #     pass
+    #
+    # """
+    # Replies if the given event was emitted in the default space of the default context.
+    # @param : event
+    # """
+    # @abc.abstractmethod
+    # def isInDefaultSpace(self, event: Event) -> bool:
+    #     pass
+    #
+    # """
+    # Deprecated
+    # See the Lifecycle capacity.
+    # @param : event
+    # """
+    # @abc.abstractmethod
+    # def spawn(self, agentType: A, *params: object) -> UUID:
+    #     pass
+    #
+    # """
+    # Deprecated
+    # since 0.11, see DefaultContextInteractions.emit(Event,Scope)
+    # @param : receiver
+    # @param : event
+    # """
+    # @abc.abstractmethod
+    # def willReceive(self, receiver: UUID, event: Event) -> None:
+    #     pass
