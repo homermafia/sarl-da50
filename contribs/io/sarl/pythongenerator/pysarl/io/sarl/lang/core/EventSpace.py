@@ -5,6 +5,7 @@ from uuid import UUID
 from typing import TYPE_CHECKING
 
 from pysarl.io.sarl.lang.core.Space import Space
+from pysarl.io.sarl.lang.core.SpaceID import SpaceID
 
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.Address import Address
@@ -23,6 +24,9 @@ class EventSpace(Space, ABC):
 
     def emit(self, agent, event):
 
+        pass
+
+    def getSpaceID(self) -> SpaceID:
         pass
 
     def register(self, agent):

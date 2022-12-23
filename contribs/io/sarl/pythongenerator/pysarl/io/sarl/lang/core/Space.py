@@ -27,20 +27,20 @@ class Space(abc.ABC):
         # Replies if the space is empty or the given identifier is associated to the only one participant to the space
         pass
 
-    @abc.abstractmethod
-    def getNumberOfStrongParticipants(self) -> int:
-        # Replies the number of strong participants to the space
-        pass
-
-    @abc.abstractmethod
-    def getNumberOfWeakParticipants(self) -> int:
-        # Replies the number of weak participants to the space
-        pass
-
-    @abc.abstractmethod
-    def forEachStrongParticipant(self, callback: Callable[[UUID], None]):
-        pass
-
-    @abc.abstractmethod
-    def forEachWeakParticipant(self, callback: Callable[[UUID], None]) -> None:
-        pass
+    # @abc.abstractmethod
+    # def getNumberOfStrongParticipants(self) -> int:
+    #     # Replies the number of strong participants to the space
+    #     pass
+    #
+    # @abc.abstractmethod
+    # def getNumberOfWeakParticipants(self) -> int:
+    #     # Replies the number of weak participants to the space
+    #     pass
+    #
+    # @abc.abstractmethod
+    # def forEachStrongParticipant(self, callback: Callable[[UUID], None]):
+    #     pass
+    #
+    # @abc.abstractmethod
+    # def forEachWeakParticipant(self, callback: Callable[[UUID], None]) -> None:
+    #     pass

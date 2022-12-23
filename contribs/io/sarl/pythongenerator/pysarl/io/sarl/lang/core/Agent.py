@@ -26,6 +26,7 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
         self.__parentID = parentID
         self.__id = agentID if agentID is not None else UUID()
         self.__skillCallback = None
+        self.__defaultContext = Context()
 
     def __str__(self) -> str:
         return "Agent{ID:" + str(self.__id) + ", parentID:" + str(self.__parentID) + "}"
@@ -40,7 +41,7 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
 
     # Temporary, we should add a defaultContext attribute to Agent
     def getDefaultContext(self) -> Context:
-        return Context()
+        return self.__defaultContext
 
     def getParentID(self) -> UUID:
         return self.__parentID
