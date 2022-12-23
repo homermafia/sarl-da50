@@ -3,12 +3,11 @@ from typing import Callable, TYPE_CHECKING
 from uuid import UUID
 from multipledispatch import dispatch
 
-from pysarl.io.sarl.core.DefaultContextInteractions import DefaultContextInteractions
 from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
 from pysarl.io.sarl.lang.core.Address import Address
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
 from vm.builtin.service.Context import Context
-from vm.builtin.skill.DefaultContextInteractionsSkill import DefaultContextInteractionsSkill
+from vm.builtin.service.PythonContext import PythonContext
 
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
@@ -26,7 +25,7 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
         self.__parentID = parentID
         self.__id = agentID if agentID is not None else UUID()
         self.__skillCallback = None
-        self.__defaultContext = Context()
+        self.__defaultContext = PythonContext()
 
     def __str__(self) -> str:
         return "Agent{ID:" + str(self.__id) + ", parentID:" + str(self.__parentID) + "}"

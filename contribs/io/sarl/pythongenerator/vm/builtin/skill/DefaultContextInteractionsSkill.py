@@ -13,17 +13,17 @@ from vm.builtin.service.Context import Context
 class DefaultContextInteractionsSkill(Skill, DefaultContextInteractions, ABC):
     def __init__(self):
         super().__init__()
-        print("création du DCI")
 
     def emit(self, event):
         dc = self.getDefaultContext()
         ds = dc.getDefaultSpace()
-        ds.emit(self.__owner, event)
+        print(dc, ds)
 
     def getDefaultContext(self):
-        return self.__owner.getDefaultContext()
+        return self.getOwner().getDefaultContext()
+
     def getDefaultSpace(self):
-        return self.__owner.getDefaultContext().getDefaultSpace()
+        return self.getOwner().getDefaultContext().getDefaultSpace()
 
     def emitToParent(self, event: Event) -> None:
         return
