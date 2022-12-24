@@ -5,6 +5,7 @@ from pysarl.io.sarl.core.AgentSpawned import AgentSpawned
 from pysarl.io.sarl.core.Destroy import Destroy
 from pysarl.io.sarl.core.Initialize import Initialize
 from vm.builtin.EventDispatcher import EventDispatcher
+from vm.builtin.service.PythonContext import PythonContext
 from vm.builtin.skill.DefaultContextInteractionsSkill import DefaultContextInteractionsSkill
 from vm.utils.singleton import singleton
 
@@ -18,11 +19,13 @@ class LifecycleService:
     def __init__(self, defaultDynamicSkillProvider):
         self.__defaultDynamicSkillProvider = defaultDynamicSkillProvider
         self.__eventDispatcher = EventDispatcher()
+        self.__world = PythonContext()
 
     def createAgent(self, agentClass, parentId = None, dynamicSkillProvider = None):
         if dynamicSkillProvider is None:
             dynamicSkillProvider = self.__defaultDynamicSkillProvider
         newAgent = agentClass(parentId, uuid.uuid4(), dynamicSkillProvider)
+        newAgent.setDefaultContext(self.__world)
         self.__agents.append(newAgent)
         self.__eventDispatcher.register(newAgent)
         errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
