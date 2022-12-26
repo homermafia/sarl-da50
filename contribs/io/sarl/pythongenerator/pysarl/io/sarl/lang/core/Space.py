@@ -27,6 +27,10 @@ class Space(abc.ABC):
         # Replies if the space is empty or the given identifier is associated to the only one participant to the space
         pass
 
+    @abc.abstractmethod
+    def emit(self):
+        pass
+
     # @abc.abstractmethod
     # def getNumberOfStrongParticipants(self) -> int:
     #     # Replies the number of strong participants to the space

@@ -17,7 +17,7 @@ class DefaultContextInteractionsSkill(Skill, DefaultContextInteractions, ABC):
     def emit(self, event):
         dc = self.getDefaultContext()
         ds = dc.getDefaultSpace()
-        ds.emit(event)
+        ds.emit(self.getOwner(), event)
 
     def getDefaultContext(self):
         return self.getOwner().getDefaultContext()
