@@ -34,6 +34,7 @@ class EventSpace(Space, ABC):
 
     def register(self, agent):
         self.participant.append(agent)
+        self.__eventDispatcher.register(agent)
 
     def getParticipants(self):
         return self.participant

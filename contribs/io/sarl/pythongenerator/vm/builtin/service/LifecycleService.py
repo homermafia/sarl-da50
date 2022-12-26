@@ -20,12 +20,14 @@ class LifecycleService:
         self.__defaultDynamicSkillProvider = defaultDynamicSkillProvider
         self.__eventDispatcher = EventDispatcher()
         self.__world = PythonContext()
+        # self.__eventSpaces = EventSpaces()
 
     def createAgent(self, agentClass, parentId = None, dynamicSkillProvider = None):
         if dynamicSkillProvider is None:
             dynamicSkillProvider = self.__defaultDynamicSkillProvider
         newAgent = agentClass(parentId, uuid.uuid4(), self.__world, dynamicSkillProvider)
         self.__agents.append(newAgent)
+        # newAgent.getDefaultContext().getDefaultSpace().register(newAgent)
         self.__eventDispatcher.register(newAgent)
         errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
         if len(errors) > 0:
