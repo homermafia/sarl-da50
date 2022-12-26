@@ -31,20 +31,20 @@ class Space(abc.ABC):
     def emit(self):
         pass
 
-    # @abc.abstractmethod
-    # def getNumberOfStrongParticipants(self) -> int:
-    #     # Replies the number of strong participants to the space
-    #     pass
-    #
-    # @abc.abstractmethod
-    # def getNumberOfWeakParticipants(self) -> int:
-    #     # Replies the number of weak participants to the space
-    #     pass
-    #
-    # @abc.abstractmethod
-    # def forEachStrongParticipant(self, callback: Callable[[UUID], None]):
-    #     pass
-    #
-    # @abc.abstractmethod
-    # def forEachWeakParticipant(self, callback: Callable[[UUID], None]) -> None:
-    #     pass
+    @abc.abstractmethod
+    def getNumberOfStrongParticipants(self) -> int:
+        # Replies the number of strong participants to the space
+        pass
+
+    @abc.abstractmethod
+    def getNumberOfWeakParticipants(self) -> int:
+        # Replies the number of weak participants to the space
+        pass
+
+    @abc.abstractmethod
+    def forEachStrongParticipant(self, callback: Callable[[UUID], None]):
+        pass
+
+    @abc.abstractmethod
+    def forEachWeakParticipant(self, callback: Callable[[UUID], None]) -> None:
+        pass

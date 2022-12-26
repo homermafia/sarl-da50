@@ -41,4 +41,18 @@ class EventSpace(Space, ABC):
     def getParticipants(self):
         return self.participant
 
+    def getNumberOfStrongParticipants(self) -> int:
+        # Replies the number of strong participants to the space
+        pass
+
+    def getNumberOfWeakParticipants(self) -> int:
+        # Replies the number of weak participants to the space
+        pass
+
+    def forEachStrongParticipant(self, callback):
+        pass
+
+    def forEachWeakParticipant(self, callback) -> None:
+        pass
+
 
