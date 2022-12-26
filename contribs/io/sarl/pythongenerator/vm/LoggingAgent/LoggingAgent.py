@@ -26,6 +26,7 @@ from vm.LoggingAgent.LoggingSkill import LoggingSkill
 from vm.LoggingAgent.Logging import Logging
 from vm.LoggingAgent.SecondAgent import SecondAgent
 from pysarl.io.sarl.core.Lifecycle import Lifecycle
+from vm.builtin.service.Context import Context
 
 
 class LoggingAgent(Agent, object):
@@ -46,5 +47,5 @@ class LoggingAgent(Agent, object):
         __event_handles.append(self.__on_Initialize__)
         return __event_handles
 
-    def __init__(self, parentID, agentID, dynamicSkillProvider = None):
-        super().__init__(parentID, agentID, dynamicSkillProvider)
+    def __init__(self, parentID, agentID, context: Context, dynamicSkillProvider = None):
+        super().__init__(parentID, agentID, context, dynamicSkillProvider)

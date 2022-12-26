@@ -24,8 +24,7 @@ class LifecycleService:
     def createAgent(self, agentClass, parentId = None, dynamicSkillProvider = None):
         if dynamicSkillProvider is None:
             dynamicSkillProvider = self.__defaultDynamicSkillProvider
-        newAgent = agentClass(parentId, uuid.uuid4(), dynamicSkillProvider)
-        newAgent.setDefaultContext(self.__world)
+        newAgent = agentClass(parentId, uuid.uuid4(), self.__world, dynamicSkillProvider)
         self.__agents.append(newAgent)
         self.__eventDispatcher.register(newAgent)
         errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))

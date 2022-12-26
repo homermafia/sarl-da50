@@ -19,6 +19,8 @@ class BootAgent(Agent,object):
 		pass
 """
 from pysarl.io.sarl.core.DefaultContextInteractions import DefaultContextInteractions
+from pysarl.io.sarl.lang.core.Event import Event
+from vm.builtin.service.Context import Context
 from vm.builtin.skill.DefaultContextInteractionsSkill import DefaultContextInteractionsSkill
 
 #### GENERATED PYTHON CODE OF THE FIRST VERSION OF HELLOWORLD
@@ -51,7 +53,7 @@ class HelloWorldAgent(Agent, object):
     def __on_Initialize__(self, occurrence):
         self.getSkill(Logging).debug(u"Hello World!d")
         self.getSkill(Logging).info(u"Hello World!i")
-        self.getSkill(DefaultContextInteractions).emit(None)
+        self.getSkill(DefaultContextInteractions).emit(Event())
         # print(str(5/0))
         self.getSkill(Lifecycle).killMe()
         print("after killMe nothing should be executed")
@@ -92,5 +94,5 @@ class HelloWorldAgent(Agent, object):
         __event_handles.append(self.__on_AgentKilled__)
         return __event_handles
 
-    def __init__(self, parentID, agentID, dynamicSkillProvider=None):
-        super().__init__(parentID, agentID, dynamicSkillProvider)
+    def __init__(self, parentID, agentID, context: Context, dynamicSkillProvider=None):
+        super().__init__(parentID, agentID, context, dynamicSkillProvider)

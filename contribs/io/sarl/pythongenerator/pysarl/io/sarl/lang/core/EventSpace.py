@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 
 from pysarl.io.sarl.lang.core.Space import Space
 from pysarl.io.sarl.lang.core.SpaceID import SpaceID
+from vm.builtin.EventDispatcher import EventDispatcher
 
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.Address import Address
@@ -16,14 +17,16 @@ if TYPE_CHECKING:
 class EventSpace(Space, ABC):
 
     def __init__(self):
-        self.participant = [] # list of agents
+        self.participants = [] # list of agents
+        self.__eventDispatcher = EventDispatcher()
 
     def getAddress(self, identifier: UUID) -> Address:
         # Returns the address of the agent identified by id
         pass
 
-    def emit(self, agent, event):
-
+    def emit(self, event):
+        for p in self.participants:
+            self.__eventDispatcher.dispatch(p, event)
         pass
 
     def getSpaceID(self) -> SpaceID:
