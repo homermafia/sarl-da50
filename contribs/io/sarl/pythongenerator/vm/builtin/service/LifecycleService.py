@@ -18,9 +18,7 @@ class LifecycleService:
 
     def __init__(self, defaultDynamicSkillProvider):
         self.__defaultDynamicSkillProvider = defaultDynamicSkillProvider
-        #self.__eventDispatcher = EventDispatcher()
         self.__world = PythonContext()
-        #self.__eventSpaces = []
 
     def createAgent(self, agentClass, parentId = None, dynamicSkillProvider = None):
         if dynamicSkillProvider is None:
@@ -28,20 +26,13 @@ class LifecycleService:
         newAgent = agentClass(parentId, uuid.uuid4(), self.__world, dynamicSkillProvider)
         self.__agents.append(newAgent)
         newAgent.getDefaultContext().getDefaultSpace().register(newAgent)
-        # self.__eventDispatcher.register(newAgent)
         errors = newAgent.getDefaultContext().getDefaultSpace().emit(newAgent, Initialize(parentId))
-        # errors = self.__eventDispatcher.dispatch(newAgent, Initialize(parentId))
         if len(errors) > 0:
             self.__agents.remove(newAgent)
             newAgent.getDefaultContext().getDefaultSpace().unregister(newAgent)
-            # self.__eventDispatcher.unregister(newAgent)
-        # We check that the agent hasn't been killed during the Initialize process
-        # and we check that no exceptions were thrown during the Initialize process
         if newAgent in self.__agents:
             newAgent.getDefaultContext().getDefaultSpace().emit(newAgent,
                                             AgentSpawned(None, newAgent.getID(), agentClass.__name__))
-            # self.__eventDispatcher.dispatch(newAgent,
-                                            #AgentSpawned(None, newAgent.getID(), agentClass.__name__))
 
 
     def killAgent(self, agent, forceKillable, terminationCause):
@@ -49,9 +40,6 @@ class LifecycleService:
         agent.getDefaultContext().getDefaultSpace().emit(agent, Destroy())
         agent.getDefaultContext().getDefaultSpace().emit(agent, AgentKilled(None, type(agent).__name__, terminationCause))
         agent.getDefaultContext().getDefaultSpace().unregister(agent)
-        # self.__eventDispatcher.dispatch(agent, Destroy())
-        # self.__eventDispatcher.dispatch(agent, AgentKilled(None, type(agent).__name__, terminationCause))
-        # self.__eventDispatcher.unregister(agent)
 
     def killAgentsLeft(self):
         for a in self.__agents:
