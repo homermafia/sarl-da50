@@ -38,7 +38,7 @@ class Space(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def forEachStrongParticipant(self, callback: Callable[[UUID], None]):
+    def forEachStrongParticipant(self, callback: Callable[[UUID], None]) -> None:
         pass
 
     @abc.abstractmethod

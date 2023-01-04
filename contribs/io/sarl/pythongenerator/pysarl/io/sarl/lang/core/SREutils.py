@@ -146,5 +146,5 @@ class SREutils():
         behavior.uninstall()
 
     """ Provide an agent with a callback function for the skill installation"""
-    def setSkillInstallationCallback(self, agent: Agent, callback: Callable[[Agent, Skill], None]):
+    def setSkillInstallationCallback(self, agent: Agent, callback: Callable[[Agent, Skill], None]) -> None:
         agent.setSkillCallback(callback)

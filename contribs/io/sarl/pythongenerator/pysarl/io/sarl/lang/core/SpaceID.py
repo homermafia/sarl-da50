@@ -71,7 +71,7 @@ class SpaceID(SRESpecificDataContainer):
         @:param : the identifier of the space
         Return true if the contextID correspond to the contextID of the spaceId
     """
-    def equalsContext(self, other: "SpaceID"):
+    def equalsContext(self, other: "SpaceID") -> bool:
         if self.__contextID is None:
             return other.getContextID() is None
         return self.__contextID == other.getContextID()
@@ -80,7 +80,7 @@ class SpaceID(SRESpecificDataContainer):
         @:param : the identifier of the space
         Return : ...
     """
-    def equalsID(self, other: "SpaceID"):
+    def equalsID(self, other: "SpaceID") -> bool:
         if self.__id is None:
             return other.getID() is None
         return self.__id == other.getID()
