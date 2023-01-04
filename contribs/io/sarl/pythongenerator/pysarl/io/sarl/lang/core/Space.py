@@ -28,10 +28,6 @@ class Space(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def emit(self):
-        pass
-
-    @abc.abstractmethod
     def getNumberOfStrongParticipants(self) -> int:
         # Replies the number of strong participants to the space
         pass

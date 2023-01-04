@@ -24,7 +24,7 @@ class EventSpace(Space, ABC):
         # Returns the address of the agent identified by id
         pass
 
-    def emit(self,agent, event):
+    def emit(self, agent, event):
         return self.__eventDispatcher.dispatch(agent, event)
 
     def getSpaceID(self) -> SpaceID:
@@ -39,7 +39,7 @@ class EventSpace(Space, ABC):
         self.__eventDispatcher.unregister(agent)
 
     def getParticipants(self):
-        return self.participant
+        return self.participants
 
     def getNumberOfStrongParticipants(self) -> int:
         # Replies the number of strong participants to the space
