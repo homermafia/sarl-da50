@@ -20,13 +20,13 @@ class LifecycleService:
         self.__defaultDynamicSkillProvider = defaultDynamicSkillProvider
         self.__world = PythonContext()
 
-    def createAgent(self, agentClass, parentId = None, dynamicSkillProvider = None):
+    def createAgent(self, agentClass, parentId = None, dynamicSkillProvider = None, *parameters):
         if dynamicSkillProvider is None:
             dynamicSkillProvider = self.__defaultDynamicSkillProvider
         newAgent = agentClass(parentId, uuid.uuid4(), self.__world, dynamicSkillProvider)
         self.__agents.append(newAgent)
         newAgent.getDefaultContext().getDefaultSpace().register(newAgent)
-        errors = newAgent.getDefaultContext().getDefaultSpace().emit(newAgent, Initialize(parentId))
+        errors = newAgent.getDefaultContext().getDefaultSpace().emit(newAgent, Initialize(parentId, *parameters))
         if len(errors) > 0:
             self.__agents.remove(newAgent)
             newAgent.getDefaultContext().getDefaultSpace().unregister(newAgent)

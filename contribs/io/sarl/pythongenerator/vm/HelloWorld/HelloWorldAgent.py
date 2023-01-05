@@ -54,6 +54,7 @@ class HelloWorldAgent(Agent, object):
     def __on_Initialize__(self, occurrence):
         self.getSkill(Logging).debug(u"Hello World!d")
         self.getSkill(Logging).info(u"Hello World!i")
+        self.getSkill(Logging).info(u"I got " + str(len(occurrence.parameters)) + u" parameters which are " + str(occurrence.parameters))
         # print(str(5/0))
         self.getSkill(Lifecycle).killMe()
         print("after killMe nothing should be executed")
