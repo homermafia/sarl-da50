@@ -2,6 +2,7 @@ from vm.AgentWithEvent.agentWithEvent import AgentWithEvent
 from vm.GuardedAgent.guardedAgent import GuardedAgent
 from vm.HelloWorld.helloWorld import HelloWorldAgent
 from vm.Kernel import Kernel
+import time
 #from contribs.io.sarl.pythongenerator.vm.HelloWorld.helloWorld import HelloWorldAgent
 from vm.LoggingAgent.LoggingAgent import LoggingAgent
 
@@ -28,5 +29,9 @@ from vm.builtin.skill.SreDynamicSkillProvider import SreDynamicSkillProvider
 #myAgentEvents = agentWithEvent.__guard_io_sarl_core_Initialize__(agentWithEvent)
 #myAgentEvents[0](agentWithEvent)
 
+# start_time = time.time()
+
 kernel = Kernel()
 kernel.start(HelloWorldAgent)
+
+# print("time elapsed : {:.2f}s".format(time.time() - start_time))

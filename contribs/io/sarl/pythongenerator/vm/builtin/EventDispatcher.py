@@ -26,9 +26,10 @@ class EventDispatcher:
         errors = []
         for b in bases:
             basesNames.append(b.__name__)
-        for (a, e), guard in self.__listeners.items():
+        copy = dict(self.__listeners)
+        for (a, e), guard in copy.items():
             if (e == eventClass or e in basesNames) and (not e in self.__onlyOnSameAgent or a == agent):
-                attr = getattr(agent, guard)
+                attr = getattr(a, guard)
                 methodsToCall = attr(event)
                 for method in methodsToCall:
                     try:

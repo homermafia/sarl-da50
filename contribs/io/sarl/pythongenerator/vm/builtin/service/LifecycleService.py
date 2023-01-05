@@ -30,6 +30,8 @@ class LifecycleService:
         if len(errors) > 0:
             self.__agents.remove(newAgent)
             newAgent.getDefaultContext().getDefaultSpace().unregister(newAgent)
+        # We check that the agent hasn't been killed during the Initialize process
+        # and we check that no exceptions were thrown during the Initialize process
         if newAgent in self.__agents:
             newAgent.getDefaultContext().getDefaultSpace().emit(newAgent,
                                             AgentSpawned(None, newAgent.getID(), agentClass.__name__))

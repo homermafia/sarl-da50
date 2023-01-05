@@ -22,8 +22,8 @@
 #### GENERATES PYTHON CODE WITH NECESSARY MODIFICATION
 
 from pysarl.io.sarl.lang.core.Agent import Agent
-from vm.LoggingAgent.LoggingSkill import LoggingSkill
-from vm.LoggingAgent.Logging import Logging
+from pysarl.io.sarl.core.Logging import Logging
+from vm.builtin.skill.LoggingSkill import LoggingSkill
 from vm.LoggingAgent.SecondAgent import SecondAgent
 from pysarl.io.sarl.core.Lifecycle import Lifecycle
 from vm.builtin.service.Context import Context
@@ -32,14 +32,14 @@ from vm.builtin.service.Context import Context
 class LoggingAgent(Agent, object):
 
     def __on_Initialize__(self, occurrence):
-        s = LoggingSkill()
-        self.setSkill(s)
-        self.getSkill(Logging).info(u"Hello World INFO!")
-        self.getSkill(Logging).debug(u"Hello World DEBUG!")
-        self.getSkill(Lifecycle).spawn(SecondAgent)
-        print(self.hasSkill(Logging))
-        self.clearSkill(Logging)
-        print(self.hasSkill(Logging))
+        # s = LoggingSkill()
+        # self.setSkill(s)
+        self.getSkill(Logging).info(u"Hello World INFO from LogginAgent!")
+        # self.getSkill(Logging).debug(u"Hello World DEBUG from LogginAgent!")
+        # self.getSkill(Lifecycle).spawn(SecondAgent)
+        # print(self.hasSkill(Logging))
+        # self.clearSkill(Logging)
+        # print(self.hasSkill(Logging))
 
     def __guard_io_sarl_core_Initialize__(self, occurrence):
         it = occurrence

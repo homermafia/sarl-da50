@@ -1,7 +1,7 @@
 
 from pysarl.io.sarl.lang.core.Agent import Agent
-from vm.LoggingAgent.LoggingSkill import LoggingSkill
-from vm.LoggingAgent.Logging import Logging
+from vm.builtin.skill.LoggingSkill import LoggingSkill
+from pysarl.io.sarl.core.Logging import Logging
 from vm.builtin.service.Context import Context
 
 

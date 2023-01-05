@@ -46,6 +46,7 @@ class BootAgent(Agent,object):
 from pysarl.io.sarl.lang.core.Agent import Agent
 from pysarl.io.sarl.core.Lifecycle import Lifecycle
 from pysarl.io.sarl.core.Logging import Logging
+from vm.LoggingAgent.LoggingAgent import LoggingAgent
 
 
 class HelloWorldAgent(Agent, object):
@@ -56,6 +57,8 @@ class HelloWorldAgent(Agent, object):
         # print(str(5/0))
         self.getSkill(Lifecycle).killMe()
         print("after killMe nothing should be executed")
+        # for i in range(10000):
+            # self.getSkill(Lifecycle).spawn(LoggingAgent)
 
     def __guard_io_sarl_core_Initialize__(self, occurrence):
         it = occurrence
