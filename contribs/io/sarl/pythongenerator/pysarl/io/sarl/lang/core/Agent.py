@@ -6,6 +6,8 @@ from multipledispatch import dispatch
 from pysarl.io.sarl.lang.core.AbstractSkillContainer import AbstractSkillContainer
 from pysarl.io.sarl.lang.core.Address import Address
 from pysarl.io.sarl.lang.core.IBehaviorGuardEvaluatorReceiver import IBehaviorGuardEvaluatorReceiver
+from vm.builtin.service.Context import Context
+from vm.builtin.service.PythonContext import PythonContext
 
 if TYPE_CHECKING:
     from pysarl.io.sarl.lang.core.DynamicSkillProvider import DynamicSkillProvider
@@ -18,11 +20,12 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
     __parentID: UUID
     __skillCallback: Callable[["Agent", Skill], None]
 
-    def __init__(self, parentID: UUID, agentID: UUID, dynamicSkillProvider: DynamicSkillProvider = None):
+    def __init__(self, parentID: UUID, agentID: UUID, context: Context, dynamicSkillProvider: DynamicSkillProvider = None):
         super(Agent, self).__init__(dynamicSkillProvider)
         self.__parentID = parentID
         self.__id = agentID if agentID is not None else UUID()
         self.__skillCallback = None
+        self.__defaultContext = context
 
     def __str__(self) -> str:
         return "Agent{ID:" + str(self.__id) + ", parentID:" + str(self.__parentID) + "}"
@@ -34,6 +37,9 @@ class Agent(AbstractSkillContainer, IBehaviorGuardEvaluatorReceiver):
 
     def setSkillCallback(self, callback: Callable[["Agent", Skill], None]) -> None:
         self.__skillCallback = callback
+
+    def getDefaultContext(self) -> Context:
+        return self.__defaultContext
 
     def getParentID(self) -> UUID:
         return self.__parentID
