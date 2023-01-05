@@ -45,6 +45,9 @@ class AgentTrait(AgentProtectedAPIObject, abc.ABC):
     def getOwner(self) -> Agent:
         return self.__agentRef()
 
+    def getOwnerClassName(self) -> str:
+        return self.getOwner().__class__.__name__
+
     def getID(self) -> UUID:
         return self.getOwner().getID()
 
