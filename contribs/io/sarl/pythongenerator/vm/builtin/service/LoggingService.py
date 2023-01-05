@@ -1,5 +1,6 @@
 import sys
 import logging
+import time
 
 from vm.utils.singleton import singleton
 
@@ -12,8 +13,9 @@ class LoggingService:
         self.__logger = logging.getLogger("Logger")
         self.__logger.addHandler(self.__streamHandler)
 
-    def log(self, level, message, stream=sys.stdout):
+    def log(self, level, message, source="SARL Run-time Environment", stream=sys.stdout):
         self.__streamHandler.setStream(stream)
         self.__logger.setLevel(level)
-        self.__logger.log(level, message)
+        formattedMessage = "[" + logging.getLevelName(level) + ", " + time.strftime("%I:%M%p") + ", " + source + "] " + message
+        self.__logger.log(level, formattedMessage)
         self.__streamHandler.flush()

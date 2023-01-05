@@ -14,10 +14,10 @@ class LoggingSkill(Skill, Logging):
         self.__logService = LoggingService()
 
     def debug(self, message: object, *parameters: object) -> None:
-        self.__logService.log(logging.DEBUG, message)
+        self.__logService.log(logging.DEBUG, message, self.getOwnerClassName())
 
     def error(self, message: object, exception: BaseException = None, *parameters: object) -> None:
-        self.__logService.log(logging.ERROR, message, sys.stderr)
+        self.__logService.log(logging.ERROR, message, sys.stderr, self.getOwnerClassName())
 
     def getLogger(self) -> logging.Logger:
         # TODO: Write this method
@@ -28,7 +28,7 @@ class LoggingSkill(Skill, Logging):
         pass
 
     def info(self, message: object, *parameters: object) -> None:
-        self.__logService.log(logging.WARNING, message)
+        self.__logService.log(logging.INFO, message, self.getOwnerClassName())
 
     def isDebugLogEnabled(self) -> bool:
         # TODO: Write this method
@@ -59,4 +59,5 @@ class LoggingSkill(Skill, Logging):
         pass
 
     def warning(self, message: object, exception: BaseException = None, *parameters: object) -> None:
-        self.__logService.log(logging.WARNING, message, sys.stderr)
+        self.__logService.log(logging.WARNING, message, self.getOwnerClassName(), sys.stderr)
+
