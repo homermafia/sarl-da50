@@ -34,8 +34,8 @@ class LoggingAgent(Agent, object):
     def __on_Initialize__(self, occurrence):
         # s = LoggingSkill()
         # self.setSkill(s)
-        self.getSkill(Logging).info(u"Hello World INFO from LogginAgent!")
-        # self.getSkill(Logging).debug(u"Hello World DEBUG from LogginAgent!")
+        self.getSkill(Logging).info(u"Hello World INFO from LoggingAgent!")
+        # self.getSkill(Logging).debug(u"Hello World DEBUG from LoggingAgent!")
         # self.getSkill(Lifecycle).spawn(SecondAgent)
         # print(self.hasSkill(Logging))
         # self.clearSkill(Logging)

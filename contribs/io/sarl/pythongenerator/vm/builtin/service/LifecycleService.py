@@ -4,9 +4,7 @@ from pysarl.io.sarl.core.AgentKilled import AgentKilled
 from pysarl.io.sarl.core.AgentSpawned import AgentSpawned
 from pysarl.io.sarl.core.Destroy import Destroy
 from pysarl.io.sarl.core.Initialize import Initialize
-from vm.builtin.EventDispatcher import EventDispatcher
 from vm.builtin.service.PythonContext import PythonContext
-from vm.builtin.skill.DefaultContextInteractionsSkill import DefaultContextInteractionsSkill
 from vm.utils.singleton import singleton
 
 

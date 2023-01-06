@@ -1,4 +1,3 @@
-import logging
 from vm.builtin.service.LifecycleService import LifecycleService
 from vm.builtin.service.LoggingService import LoggingService
 from vm.builtin.skill.SreDynamicSkillProvider import SreDynamicSkillProvider
