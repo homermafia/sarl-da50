@@ -12,6 +12,4 @@ class Kernel:
 
     def start(self, bootAgentClass, *parameters):
         self.__lifecycleService.createAgent(bootAgentClass, None, None, *parameters)
-        self.__loggingService.log(logging.INFO, "Stopping the kernel services")
         self.__lifecycleService.killAgentsLeft()
-        self.__loggingService.log(logging.INFO, "All kernel services are stopped")
